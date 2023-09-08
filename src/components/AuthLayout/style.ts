@@ -13,7 +13,7 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
 
-    @media (min-width: 768px) {
+    @media (min-width: 1216px) {
       width: 50%;
     }
 
@@ -43,7 +43,7 @@ export const Container = styled.div`
     padding: 32px;
     position: relative;
 
-    @media (min-width: 768px) {
+    @media (min-width: 1216px) {
       display: flex;
     }
 

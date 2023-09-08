@@ -1,21 +1,25 @@
-import { ThemeProvider } from 'styled-components';
 import { Router } from '../../Router';
 import { Container } from './style';
-import defaultTheme from '../../assets/styles/theme/default';
 import GlobalStyles from '../../assets/styles/global';
 import { Toaster } from 'react-hot-toast';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { AuthProvider } from '../contexts/AuthContext';
+
+const queryCliente = new QueryClient;
 
 export function App() {
     return (
-        <ThemeProvider theme={defaultTheme}>
-            <GlobalStyles />
+        <QueryClientProvider client={queryCliente}>
 
-            <Container>
-                <Router />
+            <AuthProvider>
+                <GlobalStyles />
 
-                <Toaster />
-            </Container>
+                <Container>
+                    <Router />
+                    <Toaster />
+                </Container>
+            </AuthProvider>
 
-        </ThemeProvider>
+        </QueryClientProvider>
     );
 }

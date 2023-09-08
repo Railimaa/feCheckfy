@@ -1,9 +1,9 @@
 import { ComponentProps } from 'react';
 import { ButtonStyle } from './style';
-import { Loader } from '../Loader';
+import { Spinner } from '../Spinner';
 
 interface ButtonProps extends ComponentProps<'button'> {
-  isLoading: boolean
+  isLoading?: boolean
 }
 
 export function Button({ isLoading, disabled, children, ...props }: ButtonProps) {
@@ -16,7 +16,7 @@ export function Button({ isLoading, disabled, children, ...props }: ButtonProps)
 
             {isLoading && (
                 <div className="loader">
-                    <Loader />
+                    <Spinner />
                 </div>
             )}
         </ButtonStyle>

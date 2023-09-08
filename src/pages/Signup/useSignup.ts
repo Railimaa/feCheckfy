@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { authService } from '../../services/authService';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
+import { useAuth } from '../../components/contexts/useAuth';
 
 const schema = z.object({
     name: z.string().nonempty('Nome é obrigatório'),
@@ -17,12 +18,11 @@ export function useSignup() {
     const [isLoading, setIsLoading] = useState(false);
 
 
-    const {
-        handleSubmit: hookFormSubmit,
-        register,
-        formState: { errors }} = useForm<FormData>({
-            resolver: zodResolver(schema)
-        });
+    const { handleSubmit: hookFormSubmit, register, formState: { errors }} = useForm<FormData>({
+        resolver: zodResolver(schema)
+    });
+
+    const { signin } = useAuth();
 
     const handleSubmit = hookFormSubmit(async (data) => {
         try {
@@ -32,7 +32,7 @@ export function useSignup() {
 
             toast.success('Conta criada com sucesso!');
 
-            console.log(accessToken);
+            signin(accessToken);
         } catch {
             toast.error('Erro ao criar a conta');
         } finally {

@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { authService } from '../../services/authService';
+import { useAuth } from '../../components/contexts/useAuth';
 
 const schema = z.object({
     email: z.string().nonempty('E-mail è obrigatório.').email('Informe um email válido'),
@@ -22,11 +23,15 @@ export function useSignin() {
         resolver: zodResolver(schema)
     });
 
+    const { signin } = useAuth();
+
     const handleSubmit = hookFormHandleSubmit(async (data) => {
         try {
             setIsLoading(true);
 
-            await authService.signin(data);
+            const { accessToken } = await authService.signin(data);
+
+            signin(accessToken);
         } catch {
             toast.error('Credencíais Inválidas!');
         } finally {
