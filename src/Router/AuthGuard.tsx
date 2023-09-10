@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import { useAuth } from '../components/contexts/useAuth';
+import { useAuth } from '../contexts/useAuth';
 
 interface AuthGuardProps {
   isPrivate: boolean

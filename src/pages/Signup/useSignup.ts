@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { authService } from '../../services/authService';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
-import { useAuth } from '../../components/contexts/useAuth';
+import { useAuth } from '../../contexts/useAuth';
 
 const schema = z.object({
     name: z.string().nonempty('Nome é obrigatório'),

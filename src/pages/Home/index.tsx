@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
 import { Button } from '../../components/Button';
 import { Container } from './style';
-import { useAuth } from '../../components/contexts/useAuth';
 import { delay } from '../../utils/delay';
+import { useAuth } from '../../contexts/useAuth';
 
 export function Home() {
     const [isLoading, setIsLoading] = useState(false);

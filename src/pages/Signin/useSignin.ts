@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { authService } from '../../services/authService';
-import { useAuth } from '../../components/contexts/useAuth';
+import { useAuth } from '../../contexts/useAuth';
 
 const schema = z.object({
     email: z.string().nonempty('E-mail è obrigatório.').email('Informe um email válido'),

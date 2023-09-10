@@ -3,7 +3,7 @@ import { Container } from './style';
 import GlobalStyles from '../../assets/styles/global';
 import { Toaster } from 'react-hot-toast';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { AuthProvider } from '../contexts/AuthContext';
+import { AuthProvider } from '../../contexts/AuthContext';
 
 const queryCliente = new QueryClient;
 
