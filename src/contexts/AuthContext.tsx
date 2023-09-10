@@ -46,9 +46,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     }, [isError, signOut]);
 
-    if (isFetching) {
-        return <PageLoader />;
-    }
+
 
 
     return (
@@ -56,10 +54,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             value={{
                 signedIn: isSuccess && signedIn,
                 signin,
-                signOut }}
+                signOut
+            }}
         >
+            <PageLoader isLoading={isFetching}/>
 
-            {children}
+            {!isFetching && children}
         </AuthContext.Provider>
     );
 }

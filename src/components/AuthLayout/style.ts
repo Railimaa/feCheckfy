@@ -2,6 +2,8 @@ import { styled } from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
 
@@ -18,10 +20,13 @@ export const Container = styled.div`
     }
 
     .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       margin-top: 40px;
 
       @media (min-width: 1216px) {
-        margin-top: 120px;
+        margin-top: 0;
       }
     }
 
@@ -66,13 +71,6 @@ export const Container = styled.div`
     max-width: 600px;
     border-bottom-right-radius: 28px;
     border-bottom-left-radius: 28px;
-
-
-
-    img {
-      width: 138px;
-      height: 32px;
-    }
 
       p {
         color: #404040;

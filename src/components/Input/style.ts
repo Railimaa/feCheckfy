@@ -29,9 +29,6 @@ export const InputContainer = styled.input`
     color: #262626;
     outline: none;
 
-
-
-
    &:focus {
     border-color: ${({ error }) => error ? '#C92A2A' : '#495057'};
     transition: all;

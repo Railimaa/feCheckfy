@@ -29,6 +29,7 @@ export const Container = styled.div`
         color: #087F5B;
         font-weight: 500;
       }
+
     }
   }
 `;
@@ -40,7 +41,8 @@ export const FormContainer = styled.form`
    gap: 16px;
 
   button {
-    margin-top: 8px;
+    margin-top: 12px;
+    margin-bottom: 12px;
   }
 
 `;
