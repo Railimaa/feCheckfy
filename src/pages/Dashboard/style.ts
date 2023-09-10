@@ -7,10 +7,15 @@ export const Container = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-bottom: 32px;
-  padding-top: 24px;
+  padding: 16px;
+
+  @media(min-width: 768px) {
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 32px;
+    padding-top: 24px;
+  }
+
 `;
 
 export const Header = styled.header`
@@ -22,14 +27,27 @@ export const Header = styled.header`
 
 export const Content = styled.main`
   display: flex;
+  flex-direction: column;
   gap: 16px;
   flex: 1;
 
+  @media(min-width: 768px) {
+    flex-direction: row;
+  }
+
   .Left {
-    width: 50%;
+    width: 100%;
+
+    @media(min-width: 768px) {
+      width: 50%;
+    }
   }
 
   .Right {
-    width: 50%;
+    width: 100%;
+
+    @media(min-width: 768px) {
+      width: 50%;
+    }
   }
 `;

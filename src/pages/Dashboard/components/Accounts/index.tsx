@@ -1,5 +1,9 @@
+import { Container } from './style';
+
 export function Accounts() {
     return (
-        <p>accounts</p>
+        <Container>
+            <p>accounts</p>
+        </Container>
     );
 }
