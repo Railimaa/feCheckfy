@@ -25,6 +25,8 @@ export function App() {
                     <Router />
                     <Toaster />
                 </Container>
+
+
             </AuthProvider>
 
         </QueryClientProvider>

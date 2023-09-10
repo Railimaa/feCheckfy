@@ -2,8 +2,8 @@ import {Routes, Route, BrowserRouter } from 'react-router-dom';
 import { Signin } from '../pages/Signin';
 import { Signup } from '../pages/Signup';
 import { AuthGuard } from './AuthGuard';
-import { Home } from '../pages/Home';
 import { AuthLayout } from '../components/AuthLayout/AuthLayout';
+import { Dashboard } from '../pages/Dashboard';
 
 
 export function Router() {
@@ -20,7 +20,7 @@ export function Router() {
                 </Route>
 
                 <Route element={<AuthGuard isPrivate />}>
-                    <Route path='/' element={<Home />}/>
+                    <Route path='/' element={<Dashboard />}/>
                 </Route>
 
             </Routes>
