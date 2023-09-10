@@ -3,7 +3,7 @@ import { ButtonStyle } from './style';
 import { Spinner } from '../Spinner';
 
 interface ButtonProps extends ComponentProps<'button'> {
-  isLoading?: boolean
+  isLoading?: boolean;
 }
 
 export function Button({ isLoading, disabled, children, ...props }: ButtonProps) {

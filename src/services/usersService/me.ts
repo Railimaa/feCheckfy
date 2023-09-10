@@ -1,6 +1,4 @@
-import { delay } from '../../utils/delay';
 import { httpClient } from '../httpClient';
-
 
 interface MeResponse {
   name: string;
@@ -8,7 +6,6 @@ interface MeResponse {
 }
 
 export async function me() {
-    await delay(1000);
 
     const { data } = await httpClient.get<MeResponse>('/users/me');
 

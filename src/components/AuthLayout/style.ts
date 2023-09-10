@@ -20,8 +20,8 @@ export const Container = styled.div`
     .logo {
       margin-top: 40px;
 
-      @media (min-width: 768px) {
-        margin-top: 100px;
+      @media (min-width: 1216px) {
+        margin-top: 120px;
       }
     }
 

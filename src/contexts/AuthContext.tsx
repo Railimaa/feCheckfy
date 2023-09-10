@@ -1,4 +1,8 @@
-import React, { createContext, useCallback, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
+import { usersService } from '../services/usersService';
+import { toast } from 'react-hot-toast';
+import { PageLoader } from '../components/PageLoader';
 
 interface AuthContextValue {
   signedIn: boolean;
@@ -12,8 +16,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [signedIn, setSignedIn] = useState<boolean>(() => {
         const storageAccessToken = localStorage.getItem('accessToken');
 
-
         return !!storageAccessToken;
+    });
+
+    const { isError, isFetching, isSuccess, remove } = useQuery({
+        queryKey: ['users', 'me'],
+        queryFn: () => usersService.me(),
+        enabled: signedIn,
+        staleTime: Infinity
     });
 
     const signin = useCallback((accessToken: string) => {
@@ -23,11 +33,32 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
     const signOut = useCallback(() => {
         localStorage.removeItem('accessToken');
+        remove();
+
         setSignedIn(false);
-    }, []);
+    }, [remove]);
+
+    useEffect(() => {
+        if (isError) {
+            toast.error('Sua sessão expirou!');
+            signOut();
+        }
+
+    }, [isError, signOut]);
+
+    if (isFetching) {
+        return <PageLoader />;
+    }
+
 
     return (
-        <AuthContext.Provider value={{ signedIn, signin, signOut }}>
+        <AuthContext.Provider
+            value={{
+                signedIn: isSuccess && signedIn,
+                signin,
+                signOut }}
+        >
+
             {children}
         </AuthContext.Provider>
     );

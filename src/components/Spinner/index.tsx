@@ -1,9 +1,13 @@
 import { Container } from './style';
 
-export function Spinner() {
+interface SpinnerProps {
+  color?: string;
+}
+
+export function Spinner({ color }: SpinnerProps) {
     return (
-        <Container>
-            <span className="loader"></span>
+        <Container color={color}>
+            <span className="loader" />
         </Container>
     );
 }

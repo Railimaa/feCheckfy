@@ -4,7 +4,7 @@ export const Container = styled.div`
   .loader {
     width: 24px;
     height: 24px;
-    border: 5px solid #087F5B;
+    border: 5px solid ${({ color }) => color ? color : '#087F5B'};
     border-bottom-color: transparent;
     border-radius: 50%;
     display: inline-block;

@@ -1,4 +1,3 @@
-import { delay } from '../../utils/delay';
 import { httpClient } from '../httpClient';
 
 
@@ -12,7 +11,6 @@ interface SigninResponse {
 }
 
 export async function signin(body: SigninBody) {
-    await delay(1000);
 
     const { data } = await httpClient.post<SigninResponse>('/auth/signin', body);
 

@@ -8,6 +8,7 @@ export function AuthLayout () {
     return (
         <Container>
             <div className='form'>
+
                 <div className="logo">
                     <img src={Logo} alt="" />
                 </div>
