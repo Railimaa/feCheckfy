@@ -4,14 +4,18 @@ import { EyeIcon } from '../../../../assets/icons/EyeIcon';
 import { Container } from './style';
 import { AccountCard } from './AccountCard';
 import { AccountsSliderNavigation } from './AccountsSliderNavigation';
+import { useAccounts } from './useAccounts';
+import { formatCurrency } from '../../../../utils/formatCurrency';
 
 export function Accounts() {
+    const { sliderState, setSliderState, windowWidth } = useAccounts();
+
     return (
         <Container>
             <span className='title'>Saldo total</span>
 
             <div className="saldo-btn">
-                <strong>R$ 1000,00</strong>
+                <strong>{formatCurrency(1000)}</strong>
                 <button type='button'>
                     <EyeIcon open />
                 </button>
@@ -22,16 +26,18 @@ export function Accounts() {
                 <div>
                     <Swiper
                         spaceBetween={16}
-                        slidesPerView={2.1}
+                        slidesPerView={windowWidth >= 500 ? 2.1 : 1.1 }
                         onSlideChange={swiper => {
-                            console.log('IsBegnin', swiper.isBeginning);
-                            console.log('IsEnd', swiper.isEnd);
+                            setSliderState({
+                                isBeginning: swiper.isBeginning,
+                                isEnd: swiper.isEnd,
+                            });
                         }}
                     >
                         <div className='title-acc' slot='container-start'>
                             <strong>Minhas contas</strong>
 
-                            <AccountsSliderNavigation isBeginning={false} isEnd={false}/>
+                            <AccountsSliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
                         </div>
 
                         <SwiperSlide>

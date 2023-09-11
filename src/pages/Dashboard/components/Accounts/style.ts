@@ -27,6 +27,7 @@ export const Container = styled.div`
       align-items: center;
       gap: 8px;
 
+
       button {
         display: flex;
         align-items: center;
@@ -50,6 +51,11 @@ export const Container = styled.div`
       justify-content: end;
       flex-direction: column;
       flex: 1;
+      margin-top: 40px;
+
+      @media(min-width: 768px) {
+        margin-top: 0;
+      }
 
       .title-acc {
         display: flex;
