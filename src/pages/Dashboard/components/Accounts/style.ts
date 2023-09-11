@@ -93,7 +93,10 @@ export const Container = styled.div`
           }
         }
 
+      }
 
+      .cards {
+        margin-top: 16px;
       }
 
     }
