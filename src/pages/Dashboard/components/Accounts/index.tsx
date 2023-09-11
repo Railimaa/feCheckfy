@@ -1,7 +1,9 @@
-import { ChevronLeftIcon, ChevronRightIcon } from '@radix-ui/react-icons';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 import { EyeIcon } from '../../../../assets/icons/EyeIcon';
 import { Container } from './style';
-import { AccountCard } from '../AccountCard';
+import { AccountCard } from './AccountCard';
+import { AccountsSliderNavigation } from './AccountsSliderNavigation';
 
 export function Accounts() {
     return (
@@ -17,36 +19,51 @@ export function Accounts() {
 
             <div className="my-acc">
 
-                <div className='title-acc'>
-                    <strong>Minhas contas</strong>
+                <div>
+                    <Swiper
+                        spaceBetween={16}
+                        slidesPerView={2.1}
+                        onSlideChange={swiper => {
+                            console.log('IsBegnin', swiper.isBeginning);
+                            console.log('IsEnd', swiper.isEnd);
+                        }}
+                    >
+                        <div className='title-acc' slot='container-start'>
+                            <strong>Minhas contas</strong>
 
-                    <div className="actions">
-                        <button>
-                            <span>
-                                <ChevronLeftIcon />
-                            </span>
-                        </button>
+                            <AccountsSliderNavigation isBeginning={false} isEnd={false}/>
+                        </div>
 
-                        <button>
-                            <span>
-                                <ChevronRightIcon />
-                            </span>
-                        </button>
-                    </div>
+                        <SwiperSlide>
+                            <AccountCard
+                                color='#7950F2'
+                                name='Nubank'
+                                balance={1000.2}
+                                type='CHECKING'
+                            />
+                        </SwiperSlide>
 
-                </div>
+                        <SwiperSlide>
+                            <AccountCard
+                                color='#333'
+                                name='XP'
+                                balance={10000}
+                                type='INVESTMENT'
+                            />
+                        </SwiperSlide>
 
-                <div className='cards'>
-                    <AccountCard
-                        color='#7950F2'
-                        name='Nubank'
-                        balance={123}
-                    />
-
+                        <SwiperSlide>
+                            <AccountCard
+                                color='#0f0'
+                                name='Carteira'
+                                balance={75.90}
+                                type='CHECKING'
+                            />
+                        </SwiperSlide>
+                    </Swiper>
                 </div>
 
             </div>
-
 
         </Container>
     );

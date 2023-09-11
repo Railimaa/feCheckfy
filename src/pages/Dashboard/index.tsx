@@ -4,6 +4,7 @@ import { Accounts } from './components/Accounts';
 import { Transactions } from './components/Transactions';
 import { Container, Content, Header } from './style';
 
+
 export function Dashboard() {
 
 
