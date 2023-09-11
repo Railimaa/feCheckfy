@@ -3,9 +3,9 @@ import 'swiper/css';
 import { EyeIcon } from '../../../../assets/icons/EyeIcon';
 import { Container } from './style';
 import { AccountCard } from './AccountCard';
-import { AccountsSliderNavigation } from './AccountsSliderNavigation';
 import { useAccounts } from './useAccounts';
 import { formatCurrency } from '../../../../utils/formatCurrency';
+import { SliderNavigation } from './SliderNavigation';
 
 export function Accounts() {
     const { sliderState, setSliderState, windowWidth } = useAccounts();
@@ -37,7 +37,7 @@ export function Accounts() {
                         <div className='title-acc' slot='container-start'>
                             <strong>Minhas contas</strong>
 
-                            <AccountsSliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
+                            <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
                         </div>
 
                         <SwiperSlide>
