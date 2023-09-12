@@ -15,13 +15,13 @@ export function SliderNavigation({ isBeginning, isEnd }: SliderNavigationProps) 
         <Container>
             <button onClick={() => swiper.slidePrev()} disabled={isBeginning}>
                 <span>
-                    <ChevronLeftIcon color='#fff'/>
+                    <ChevronLeftIcon color='#fff' width={20} height={20}/>
                 </span>
             </button>
 
             <button onClick={() => swiper.slideNext()} disabled={isEnd}>
                 <span>
-                    <ChevronRightIcon color='#fff'/>
+                    <ChevronRightIcon color='#fff' width={20} height={20}/>
                 </span>
             </button>
         </Container>

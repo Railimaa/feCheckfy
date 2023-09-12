@@ -4,6 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { MONTHS } from '../../../../utils/contants';
 import { FilterIcon } from '../../../../assets/icons/FilterIcon';
 import { Container, Content, Header } from './style';
+import { SliderOption } from './SliderOption';
+import { SliderNavigation } from './SliderNavigation';
 
 export function Transactions() {
     return (
@@ -25,11 +27,10 @@ export function Transactions() {
                     slidesPerView={3}
                     centeredSlides
                 >
-                    {MONTHS.map((month) => (
+                    <SliderNavigation />
+                    {MONTHS.map((month, index) => (
                         <SwiperSlide key={month}>
-                            <button>
-                                {month}
-                            </button>
+                            <SliderOption month={month} index={index}/>
                         </SwiperSlide>
                     ))}
 
