@@ -3,9 +3,11 @@ import { TransactionsIcon } from '../../../../assets/icons/TransactionsIcon';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MONTHS } from '../../../../utils/contants';
 import { FilterIcon } from '../../../../assets/icons/FilterIcon';
-import { Container, Content, Header } from './style';
+import { Card, Container, Content, Header } from './style';
 import { SliderOption } from './SliderOption';
 import { SliderNavigation } from './SliderNavigation';
+import { formatCurrency } from '../../../../utils/formatCurrency';
+import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
 
 export function Transactions() {
     return (
@@ -38,8 +40,31 @@ export function Transactions() {
             </div>
 
             <Content>
-              COnteudo
+                <Card>
+                    <div className="content-transaction">
+                        <CategoryIcon type='expense'/>
+
+                        <div className="title-and-date">
+                            <strong>Almoço</strong>
+                            <span>12/03/2023</span>
+                        </div>
+                    </div>
+                    <span>- {formatCurrency(123)}</span>
+                </Card>
+
+                <Card>
+                    <div className="content-transaction">
+                        <CategoryIcon type='income'/>
+
+                        <div className="title-and-date">
+                            <strong>Trabalho</strong>
+                            <span>12/04/2023</span>
+                        </div>
+                    </div>
+                    <span>{formatCurrency(123)}</span>
+                </Card>
             </Content>
+
         </Container>
     );
 }

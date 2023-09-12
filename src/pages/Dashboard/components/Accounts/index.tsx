@@ -63,7 +63,7 @@ export function Accounts() {
                                 color='#0f0'
                                 name='Carteira'
                                 balance={75.90}
-                                type='CHECKING'
+                                type='CASH'
                             />
                         </SwiperSlide>
                     </Swiper>

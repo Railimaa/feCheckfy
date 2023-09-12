@@ -9,6 +9,7 @@ export const Container = styled.div`
   padding: 16px;
   min-height: calc(100vh - 48px);
 
+
   @media(min-width: 768px) {
     padding-left: 32px;
     padding-right: 32px;
@@ -27,8 +28,9 @@ export const Header = styled.header`
 export const Content = styled.main`
   display: flex;
   flex-direction: column;
-  gap: 16px;
   flex: 1;
+  gap: 16px;
+  max-height: calc(100vh - 48px);
 
   @media(min-width: 768px) {
     flex-direction: row;
@@ -44,6 +46,7 @@ export const Content = styled.main`
 
   .Right {
     width: 100%;
+
 
     @media(min-width: 768px) {
       width: 50%;
