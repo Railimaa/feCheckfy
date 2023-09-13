@@ -22,7 +22,7 @@ export const InputContainer = styled.input`
     width: 100%;
     background: #fff;
     border-radius: 8px;
-    border: 1px solid ${({ error }) => (error ? '#C92A2A' : '#ADB5BD')};
+    border: 1px solid ${({ color }) => (color ? '#C92A2A' : '#ADB5BD')};
     padding-left: 12px;
     padding-right: 12px;
     height: 52px;
@@ -30,7 +30,7 @@ export const InputContainer = styled.input`
     outline: none;
 
    &:focus {
-    border-color: ${({ error }) => error ? '#C92A2A' : '#495057'};
+    border-color: ${({ color }) => color ? '#C92A2A' : '#495057'};
     transition: all;
    }
   `;

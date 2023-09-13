@@ -11,11 +11,9 @@ export function SliderOption({ month, index }: SliderOptionsProps) {
 
     return (
         <Container>
-
             <button onClick={() => swiper.slideTo(index)}>
                 {month}
             </button>
-
         </Container>
     );
 }

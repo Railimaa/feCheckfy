@@ -8,8 +8,11 @@ import { SliderOption } from './SliderOption';
 import { SliderNavigation } from './SliderNavigation';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
+import { useDashboardContext } from '../DashboardContext/useDashboardContext';
 
 export function Transactions() {
+    const { arValuesVisible } = useDashboardContext();
+
     return (
         <Container>
             <Header>
@@ -49,7 +52,11 @@ export function Transactions() {
                             <span>12/03/2023</span>
                         </div>
                     </div>
-                    <span>- {formatCurrency(123)}</span>
+                    <span
+                        style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                    >
+                      - {formatCurrency(123)}
+                    </span>
                 </Card>
 
                 <Card>

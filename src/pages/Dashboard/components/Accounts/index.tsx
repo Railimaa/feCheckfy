@@ -7,17 +7,31 @@ import { useAccounts } from './useAccounts';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { SliderNavigation } from './SliderNavigation';
 
+
+
 export function Accounts() {
-    const { sliderState, setSliderState, windowWidth } = useAccounts();
+    const {
+        sliderState,
+        setSliderState,
+        windowWidth,
+        arValuesVisible,
+        toogleValueVisibility
+    }  = useAccounts();
+
 
     return (
         <Container>
             <span className='title'>Saldo total</span>
 
             <div className="saldo-btn">
-                <strong>{formatCurrency(1000)}</strong>
-                <button type='button'>
-                    <EyeIcon open />
+                <strong
+                    style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                >
+                    {formatCurrency(1000)}
+                </strong>
+
+                <button type='button' onClick={toogleValueVisibility}>
+                    <EyeIcon open={arValuesVisible} />
                 </button>
             </div>
 

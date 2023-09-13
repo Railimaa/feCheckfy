@@ -19,6 +19,7 @@ export function Button({ isLoading, disabled, children, ...props }: ButtonProps)
                     <Spinner />
                 </div>
             )}
+
         </ButtonStyle>
     );
 }
