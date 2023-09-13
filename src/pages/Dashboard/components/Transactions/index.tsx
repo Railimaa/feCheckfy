@@ -8,10 +8,10 @@ import { SliderOption } from './SliderOption';
 import { SliderNavigation } from './SliderNavigation';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
-import { useDashboardContext } from '../DashboardContext/useDashboardContext';
+import { useTransaction } from './useTransaction';
 
 export function Transactions() {
-    const { arValuesVisible } = useDashboardContext();
+    const { arValuesVisible } = useTransaction();
 
     return (
         <Container>
