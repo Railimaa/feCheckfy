@@ -9,69 +9,81 @@ import { SliderNavigation } from './SliderNavigation';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
 import { useTransaction } from './useTransaction';
+import { Spinner } from '../../../../components/Spinner';
 
 export function Transactions() {
-    const { arValuesVisible } = useTransaction();
+    const { arValuesVisible, isLoading } = useTransaction();
 
     return (
         <Container>
-            <Header>
-                <button className='btn-transactions'>
-                    <TransactionsIcon />
-                    <span>Transações</span>
-                    <ChevronDownIcon color='#212529' />
-                </button>
+            {isLoading && (
+                <div className="loading">
+                    <Spinner width={36} height={36}/>
+                </div>
+            )}
 
-                <button className='btn-filter'>
-                    <FilterIcon />
-                </button>
-            </Header>
+            {!isLoading && (
+                <>
+                    <Header>
+                        <button className='btn-transactions'>
+                            <TransactionsIcon />
+                            <span>Transações</span>
+                            <ChevronDownIcon color='#212529' />
+                        </button>
 
-            <div className="slider-mounth">
-                <Swiper
-                    slidesPerView={3}
-                    centeredSlides
-                >
-                    <SliderNavigation />
-                    {MONTHS.map((month, index) => (
-                        <SwiperSlide key={month}>
-                            <SliderOption month={month} index={index}/>
-                        </SwiperSlide>
-                    ))}
+                        <button className='btn-filter'>
+                            <FilterIcon />
+                        </button>
+                    </Header>
 
-                </Swiper>
-            </div>
+                    <div className="slider-mounth">
+                        <Swiper
+                            slidesPerView={3}
+                            centeredSlides
+                        >
+                            <SliderNavigation />
+                            {MONTHS.map((month, index) => (
+                                <SwiperSlide key={month}>
+                                    <SliderOption month={month} index={index}/>
+                                </SwiperSlide>
+                            ))}
 
-            <Content>
-                <Card>
-                    <div className="content-transaction">
-                        <CategoryIcon type='expense'/>
-
-                        <div className="title-and-date">
-                            <strong>Almoço</strong>
-                            <span>12/03/2023</span>
-                        </div>
+                        </Swiper>
                     </div>
-                    <span
-                        style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                    >
+
+                    <Content>
+                        <Card>
+                            <div className="content-transaction">
+                                <CategoryIcon type='expense'/>
+
+                                <div className="title-and-date">
+                                    <strong>Almoço</strong>
+                                    <span>12/03/2023</span>
+                                </div>
+                            </div>
+                            <span
+                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                            >
                       - {formatCurrency(123)}
-                    </span>
-                </Card>
+                            </span>
+                        </Card>
 
-                <Card>
-                    <div className="content-transaction">
-                        <CategoryIcon type='income'/>
+                        <Card>
+                            <div className="content-transaction">
+                                <CategoryIcon type='income'/>
 
-                        <div className="title-and-date">
-                            <strong>Trabalho</strong>
-                            <span>12/04/2023</span>
-                        </div>
-                    </div>
-                    <span>{formatCurrency(123)}</span>
-                </Card>
-            </Content>
+                                <div className="title-and-date">
+                                    <strong>Trabalho</strong>
+                                    <span>12/04/2023</span>
+                                </div>
+                            </div>
+                            <span>{formatCurrency(123)}</span>
+                        </Card>
+                    </Content>
 
+
+                </>
+            )}
         </Container>
     );
 }

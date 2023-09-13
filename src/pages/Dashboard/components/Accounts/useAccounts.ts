@@ -11,5 +11,5 @@ export function useAccounts() {
         isEnd: false,
     });
 
-    return { sliderState, setSliderState, windowWidth, arValuesVisible, toogleValueVisibility };
+    return { sliderState, setSliderState, windowWidth, arValuesVisible, toogleValueVisibility, isLoading: true };
 }
