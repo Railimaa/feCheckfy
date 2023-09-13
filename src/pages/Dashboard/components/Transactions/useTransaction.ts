@@ -4,5 +4,5 @@ export function useTransaction() {
     const { arValuesVisible } = useDashboardContext();
 
 
-    return { arValuesVisible, isLoading: true };
+    return { arValuesVisible, isLoading: false };
 }

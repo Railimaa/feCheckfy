@@ -7,7 +7,7 @@ import { useAccounts } from './useAccounts';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { SliderNavigation } from './SliderNavigation';
 import { Spinner } from '../../../../components/Spinner';
-
+import { PlusIcon } from '@radix-ui/react-icons';
 
 
 export function Accounts() {
@@ -17,7 +17,8 @@ export function Accounts() {
         windowWidth,
         arValuesVisible,
         toogleValueVisibility,
-        isLoading
+        isLoading,
+        accounts
     }  = useAccounts();
 
 
@@ -46,52 +47,71 @@ export function Accounts() {
                     </div>
 
                     <div className="my-acc">
-
-                        <div>
-                            <Swiper
-                                spaceBetween={16}
-                                slidesPerView={windowWidth >= 500 ? 2.1 : 1.1 }
-                                onSlideChange={swiper => {
-                                    setSliderState({
-                                        isBeginning: swiper.isBeginning,
-                                        isEnd: swiper.isEnd,
-                                    });
-                                }}
-                            >
-                                <div className='title-acc' slot='container-start'>
+                        {accounts.length === 0 && (
+                            <>
+                                <div className='title-acc-0' slot='container-start'>
                                     <strong>Minhas contas</strong>
-
-                                    <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
                                 </div>
 
-                                <SwiperSlide>
-                                    <AccountCard
-                                        color='#7950F2'
-                                        name='Nubank'
-                                        balance={1000.2}
-                                        type='CHECKING'
-                                    />
-                                </SwiperSlide>
+                                <div className='btn-title-acc-0'>
+                                    <button>
+                                        <div className="icon"> <PlusIcon width={24} height={24}/> </div>
+                                        <span>Cadastre uma nova conta</span>
+                                    </button>
+                                </div>
+                            </>
+                        )}
 
-                                <SwiperSlide>
-                                    <AccountCard
-                                        color='#333'
-                                        name='XP'
-                                        balance={10000}
-                                        type='INVESTMENT'
-                                    />
-                                </SwiperSlide>
 
-                                <SwiperSlide>
-                                    <AccountCard
-                                        color='#0f0'
-                                        name='Carteira'
-                                        balance={75.90}
-                                        type='CASH'
-                                    />
-                                </SwiperSlide>
-                            </Swiper>
-                        </div>
+                        {accounts.length > 0 && (
+                            <div>
+                                <Swiper
+                                    spaceBetween={16}
+                                    slidesPerView={windowWidth >= 500 ? 2.1 : 1.1 }
+                                    onSlideChange={swiper => {
+                                        setSliderState({
+                                            isBeginning: swiper.isBeginning,
+                                            isEnd: swiper.isEnd,
+                                        });
+                                    }}
+                                >
+                                    <div className='title-acc' slot='container-start'>
+                                        <strong>Minhas contas</strong>
+
+                                        <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
+                                    </div>
+
+                                    <SwiperSlide>
+                                        <AccountCard
+                                            color='#7950F2'
+                                            name='Nubank'
+                                            balance={1000.2}
+                                            type='CHECKING'
+                                        />
+                                    </SwiperSlide>
+
+                                    <SwiperSlide>
+                                        <AccountCard
+                                            color='#333'
+                                            name='XP'
+                                            balance={10000}
+                                            type='INVESTMENT'
+                                        />
+                                    </SwiperSlide>
+
+                                    <SwiperSlide>
+                                        <AccountCard
+                                            color='#0f0'
+                                            name='Carteira'
+                                            balance={75.90}
+                                            type='CASH'
+                                        />
+                                    </SwiperSlide>
+                                </Swiper>
+                            </div>
+
+                        )}
+
 
                     </div>
                 </>

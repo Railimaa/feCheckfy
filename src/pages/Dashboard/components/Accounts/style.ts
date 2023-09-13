@@ -78,6 +78,53 @@ export const Container = styled.div`
         }
       }
 
+      .title-acc-0 {
+        margin-bottom: 10px;
+
+        strong {
+          letter-spacing: -1px;
+          color: #fff;
+          font-size: 18px;
+        }
+      }
+
+
+     .btn-title-acc-0 {
+       button {
+         color: #fff;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         flex-direction: column;
+         margin-top: 16px;
+         border: 2px dashed #12B886;
+         background: transparent;
+         height: 204px;
+         width: 100%;
+         border-radius: 16px;
+         gap: 16px;
+
+         .icon {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           width: 44px;
+           height: 44px;
+           border: 2px dashed #fff;
+           border-radius: 999px;
+         }
+       }
+
+       span {
+        display: block;
+        text-align: center;
+        width: 128px;
+        letter-spacing: -0.5px;
+        font-weight: 500;
+        font-size: 16px;
+       }
+     }
+
 
     }
 
