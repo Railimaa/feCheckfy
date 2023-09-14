@@ -10,20 +10,24 @@ import { formatCurrency } from '../../../../utils/formatCurrency';
 import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
 import { useTransaction } from './useTransaction';
 import { Spinner } from '../../../../components/Spinner';
+import emptyState from '../../../../assets/images/empty-state.svg';
 
 export function Transactions() {
-    const { arValuesVisible, isLoading } = useTransaction();
+    const { arValuesVisible, transactions, isInitialLoading, isLoading} = useTransaction();
+
+    const hasTransaction = transactions.length > 0;
 
     return (
         <Container>
-            {isLoading && (
+            {isInitialLoading && (
                 <div className="loading">
                     <Spinner width={36} height={36}/>
                 </div>
             )}
 
-            {!isLoading && (
+            {!isInitialLoading && (
                 <>
+
                     <Header>
                         <button className='btn-transactions'>
                             <TransactionsIcon />
@@ -52,33 +56,53 @@ export function Transactions() {
                     </div>
 
                     <Content>
-                        <Card>
-                            <div className="content-transaction">
-                                <CategoryIcon type='expense'/>
-
-                                <div className="title-and-date">
-                                    <strong>Almoço</strong>
-                                    <span>12/03/2023</span>
-                                </div>
+                        {isLoading && (
+                            <div className="empty-transactions">
+                                <Spinner width={24} height={24}/>
                             </div>
-                            <span
-                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                            >
-                      - {formatCurrency(123)}
-                            </span>
-                        </Card>
+                        )}
 
-                        <Card>
-                            <div className="content-transaction">
-                                <CategoryIcon type='income'/>
-
-                                <div className="title-and-date">
-                                    <strong>Trabalho</strong>
-                                    <span>12/04/2023</span>
-                                </div>
+                        {(!hasTransaction && !isLoading)  && (
+                            <div className="empty-transactions">
+                                <img src={emptyState} alt="EmptyState" />
+                                <span>Não encontramos nenhuma transação!</span>
                             </div>
-                            <span>{formatCurrency(123)}</span>
-                        </Card>
+                        )}
+
+
+                        {(hasTransaction && !isLoading) && (
+                            <>
+                                <Card>
+                                    <div className="content-transaction">
+                                        <CategoryIcon type='expense'/>
+
+                                        <div className="title-and-date">
+                                            <strong>Almoço</strong>
+                                            <span>12/03/2023</span>
+                                        </div>
+                                    </div>
+                                    <span
+                                        style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                                    >
+                                      - {formatCurrency(123)}
+                                    </span>
+                                </Card>
+
+                                <Card>
+                                    <div className="content-transaction">
+                                        <CategoryIcon type='income'/>
+
+                                        <div className="title-and-date">
+                                            <strong>Trabalho</strong>
+                                            <span>12/04/2023</span>
+                                        </div>
+                                    </div>
+                                    <span>{formatCurrency(123)}</span>
+                                </Card>
+                            </>
+                        )}
+
+
                     </Content>
 
 

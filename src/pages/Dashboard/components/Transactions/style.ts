@@ -62,6 +62,19 @@ export const Content = styled.div`
     margin-top: 16px;
     flex: 1;
     overflow-y: auto;
+
+    .empty-transactions {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      span {
+        color: #495057;
+      }
+    }
 `;
 
 export const Card = styled.div`

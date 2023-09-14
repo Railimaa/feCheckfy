@@ -4,5 +4,10 @@ export function useTransaction() {
     const { arValuesVisible } = useDashboardContext();
 
 
-    return { arValuesVisible, isLoading: false };
+    return {
+        arValuesVisible,
+        transactions: [0],
+        isInitialLoading: false,
+        isLoading: false
+    };
 }
