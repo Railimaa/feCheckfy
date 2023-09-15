@@ -3,7 +3,7 @@ import { UserMenu } from '../../components/UserMenu';
 import { Accounts } from './components/Accounts';
 import { DashboardProvider } from './components/DashboardContext';
 import { Transactions } from './components/Transactions';
-import { Container, Content, Header } from './style';
+import { Container, Header, Main } from './style';
 
 
 export function Dashboard() {
@@ -16,7 +16,7 @@ export function Dashboard() {
                     <UserMenu />
                 </Header>
 
-                <Content>
+                <Main>
                     <div className="Left">
                         <Accounts />
                     </div>
@@ -24,7 +24,7 @@ export function Dashboard() {
                     <div className="Right">
                         <Transactions />
                     </div>
-                </Content>
+                </Main>
             </Container>
         </DashboardProvider>
     );

@@ -25,7 +25,7 @@ export const Header = styled.header`
   height: 48px;
 `;
 
-export const Content = styled.main`
+export const Main = styled.main`
   display: flex;
   flex-direction: column;
   flex: 1;

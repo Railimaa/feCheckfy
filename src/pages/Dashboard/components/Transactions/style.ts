@@ -37,20 +37,6 @@ export const Header = styled.header`
    align-items: center;
    justify-content: space-between;
 
-  .btn-transactions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    border: none;
-    background: transparent;
-
-    span {
-      font-size: 14px;
-      color: #343A40;
-      font-weight: 600;
-      letter-spacing: -0.5;
-    }
-   }
 
    .btn-filter {
     border: none;

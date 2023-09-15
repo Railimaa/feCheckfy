@@ -1,5 +1,5 @@
 import * as RdxDropdownMenu from '@radix-ui/react-dropdown-menu';
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { ContainerContent, ContainerItem } from './style';
 
 
@@ -19,13 +19,19 @@ function DropdownMenuTrigger({ children }: { children: React.ReactNode }) {
     );
 }
 
-function DropdownMenuContent({ children }: { children: React.ReactNode }) {
+interface DropdownMenuContentProps {
+  children: React.ReactNode;
+  style?: CSSProperties;
+  side?: 'top' | 'right' | 'bottom' | 'left'
+}
+
+function DropdownMenuContent({ children, style, side }: DropdownMenuContentProps) {
     return (
         <RdxDropdownMenu.Portal>
 
-            <RdxDropdownMenu.Content>
+            <RdxDropdownMenu.Content side={side} style={{ zIndex: 50 }}>
 
-                <ContainerContent>
+                <ContainerContent style={style}>
                     {children}
                 </ContainerContent>
 
@@ -36,13 +42,15 @@ function DropdownMenuContent({ children }: { children: React.ReactNode }) {
 
 interface DropdownMenuItemProps {
   children: React.ReactNode;
+  style?: CSSProperties;
+  onSelect?: () => void;
 }
 
-function DropdownMenuItem({ children }: DropdownMenuItemProps) {
+function DropdownMenuItem({ children, style, onSelect }: DropdownMenuItemProps) {
     return (
-        <RdxDropdownMenu.Item style={{ border: 'none', outline: 'none' }}>
+        <RdxDropdownMenu.Item style={{ border: 'none', outline: 'none'}} onSelect={onSelect} >
 
-            <ContainerItem>
+            <ContainerItem style={style}>
                 {children}
             </ContainerItem>
 

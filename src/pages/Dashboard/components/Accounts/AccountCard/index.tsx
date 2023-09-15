@@ -21,7 +21,7 @@ export function AccountCard({ color, name, balance, type }: AccountCardProps) {
         <Container color={color} >
 
             <div className='content'>
-                <BankAccountTypeIcon type={type}/>
+                <BankAccountTypeIcon type={type} />
 
                 <span>{name}</span>
             </div>
