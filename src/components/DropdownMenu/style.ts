@@ -18,7 +18,7 @@ export const ContainerTrigger = styled.div`
 
 
 export const ContainerContent = styled.div`
-  animation: ${slideUpAndFade} 0.1s ease-in-out;
+  animation: ${slideUpAndFade} 0.2s ease-in-out;
   padding: 8px;
   background: #fff;
   border-radius: 16px;

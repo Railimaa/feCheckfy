@@ -30,8 +30,6 @@ export function useSignup() {
 
             const { accessToken } = await authService.signup(data);
 
-            toast.success('Conta criada com sucesso!');
-
             signin(accessToken);
         } catch {
             toast.error('Erro ao criar a conta');
