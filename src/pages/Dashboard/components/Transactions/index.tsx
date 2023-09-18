@@ -10,9 +10,18 @@ import { useTransaction } from './useTransaction';
 import { Spinner } from '../../../../components/Spinner';
 import emptyState from '../../../../assets/images/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
+import { FiltersModal } from './FiltersModal/FiltersModal';
 
 export function Transactions() {
-    const { arValuesVisible, transactions, isInitialLoading, isLoading} = useTransaction();
+    const {
+        arValuesVisible,
+        transactions,
+        isInitialLoading,
+        isLoading,
+        isFilterModalOpen,
+        handleOpenFiltersModal,
+        handleCloseFiltersModal
+    } = useTransaction();
 
     const hasTransaction = transactions.length > 0;
 
@@ -26,11 +35,15 @@ export function Transactions() {
 
             {!isInitialLoading && (
                 <>
+                    <FiltersModal
+                        open={isFilterModalOpen}
+                        onClose={handleCloseFiltersModal}
+                    />
 
                     <Header>
                         <TransactionTypeDropdown />
 
-                        <button className='btn-filter'>
+                        <button className='btn-filter' onClick={handleOpenFiltersModal}>
                             <FilterIcon />
                         </button>
                     </Header>
@@ -97,7 +110,6 @@ export function Transactions() {
                             </>
                         )}
                     </Content>
-
 
                 </>
             )}

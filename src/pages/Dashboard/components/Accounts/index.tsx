@@ -21,6 +21,7 @@ export function Accounts() {
         accounts
     }  = useAccounts();
 
+    const hasAccounts = accounts.length > 0;
 
     return (
         <Container>
@@ -47,7 +48,7 @@ export function Accounts() {
                     </div>
 
                     <div className="my-acc">
-                        {accounts.length === 0 && (
+                        {!hasAccounts && (
                             <>
                                 <div className='title-acc-0' slot='container-start'>
                                     <strong>Minhas contas</strong>
@@ -63,7 +64,7 @@ export function Accounts() {
                         )}
 
 
-                        {accounts.length > 0 && (
+                        {hasAccounts && (
                             <div>
                                 <Swiper
                                     spaceBetween={16}

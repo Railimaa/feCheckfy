@@ -25,12 +25,12 @@ export function TransactionTypeDropdown() {
 
                     <DropdownMenu.Item style={{ gap: '8px' }}>
                         <ExpensesIcon />
-                       Despesas
+                        Despesas
                     </DropdownMenu.Item>
 
                     <DropdownMenu.Item style={{ gap: '8px' }}>
                         <TransactionsIcon />
-                       Transações
+                        Transações
                     </DropdownMenu.Item>
                 </DropdownMenu.Content>
 

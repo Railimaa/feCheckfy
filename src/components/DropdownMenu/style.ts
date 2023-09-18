@@ -39,6 +39,7 @@ export const ContainerItem = styled.div`
   cursor: pointer;
 
   &:hover {
+    color: ${({ color }) => color ? color : ''};
     background: #F8F9FA;
     border-radius: 16px;
     transition: all ease-in 0.1s;

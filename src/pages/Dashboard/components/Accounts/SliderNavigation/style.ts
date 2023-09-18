@@ -22,10 +22,5 @@ export const Container = styled.div `
               opacity: 0.4;
               background: none;
             }
-
-            span {
-              width: 24px;
-              height: 24px;
-            }
       }
 `;

@@ -1,4 +1,5 @@
 import { Logo } from '../../components/Logo';
+import { Modal } from '../../components/Modal';
 import { UserMenu } from '../../components/UserMenu';
 import { Accounts } from './components/Accounts';
 import { DashboardProvider } from './components/DashboardContext';
@@ -8,6 +9,7 @@ import { Container, Header, Main } from './style';
 
 
 export function Dashboard() {
+
 
     return (
         <DashboardProvider>
@@ -28,7 +30,12 @@ export function Dashboard() {
                 </Main>
 
                 <Fab />
+
+                <Modal open={false} title="Receitas">
+                    Conteudo
+                </Modal>
             </Container>
+
         </DashboardProvider>
     );
 }

@@ -16,7 +16,7 @@ export function UserMenu() {
 
             <DropdownMenu.Content style={{ width: '130px' }}>
 
-                <DropdownMenu.Item style={{ display: 'flex', justifyContent: 'space-between' }} onSelect={logout}>
+                <DropdownMenu.Item style={{ justifyContent: 'space-between', }}  colorHover='#087F5B' onSelect={logout}>
                          Sair
                     <ExitIcon width={18} height={18} />
                 </DropdownMenu.Item>
