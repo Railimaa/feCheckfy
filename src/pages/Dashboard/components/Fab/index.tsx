@@ -4,13 +4,16 @@ import { Container } from './style';
 import { DropdownMenu } from '../../../../components/DropdownMenu';
 import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
 import { BankAccountIcon } from '../../../../assets/icons/BankAccountIcon';
+import { useDashboardContext } from '../DashboardContext/useDashboardContext';
 
 export function Fab() {
+    const { openNewAccountModal } = useDashboardContext();
+
     return (
         <Container>
             <DropdownMenu.Root>
 
-                <DropdownMenu.Trigger>
+                <DropdownMenu.Trigger >
                     <PlusIcon width={24} height={24}/>
                 </DropdownMenu.Trigger>
 
@@ -25,7 +28,7 @@ export function Fab() {
                         Nova Receita
                     </DropdownMenu.Item>
 
-                    <DropdownMenu.Item style={{ gap: '8px' }}>
+                    <DropdownMenu.Item style={{ gap: '8px' }} onSelect={openNewAccountModal}>
                         <BankAccountIcon />
                         Nova Conta
                     </DropdownMenu.Item>

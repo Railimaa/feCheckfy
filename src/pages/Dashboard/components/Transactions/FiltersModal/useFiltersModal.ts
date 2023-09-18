@@ -2,10 +2,20 @@ import { useState } from 'react';
 
 export function useFiltersModal() {
     const [selectedBankAccountId, setSelectedBankAccountId] = useState<null | string>(null);
+    const [selectedYear, setSelectedYear] = useState(new Date().getFullYear());
 
     function handleSelectBankAccountId(bankAccountId: string) {
-        setSelectedBankAccountId(bankAccountId);
+        setSelectedBankAccountId(prevState => prevState === bankAccountId ? null : bankAccountId);
     }
 
-    return { selectedBankAccountId, handleSelectBankAccountId };
+    function handleChangeYear(step: number) {
+        setSelectedYear(prevState => prevState + step);
+    }
+
+    return {
+        selectedBankAccountId,
+        handleSelectBankAccountId,
+        selectedYear,
+        handleChangeYear,
+    };
 }

@@ -4,7 +4,7 @@ import { useDashboardContext } from '../DashboardContext/useDashboardContext';
 export function useTransaction() {
     const { arValuesVisible } = useDashboardContext();
 
-    const [isFilterModalOpen, setIsFilterModalOpen] = useState(true);
+    const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
 
     function handleOpenFiltersModal() {
         setIsFilterModalOpen(true);

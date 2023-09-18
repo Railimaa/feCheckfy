@@ -12,15 +12,19 @@ export const ContainerAccounts = styled.div`
       padding: 8px;
       border-radius: 16px;
       border: none;
-      background: #E9ECEF !important;
       outline: none;
       color: #343A40;
+      background: none;
 
       &:hover {
-        background: #F1F3F5;
+        background: #F8F9FA;
         transition: all 0.1s;
       }
     }
+
+    .btn-active {
+          background: #E9ECEF !important;
+      }
 
     span {
       color: #343A40;

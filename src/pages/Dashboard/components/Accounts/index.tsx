@@ -18,7 +18,8 @@ export function Accounts() {
         arValuesVisible,
         toogleValueVisibility,
         isLoading,
-        accounts
+        accounts,
+        openNewAccountModal
     }  = useAccounts();
 
     const hasAccounts = accounts.length > 0;
@@ -55,7 +56,7 @@ export function Accounts() {
                                 </div>
 
                                 <div className='btn-title-acc-0'>
-                                    <button>
+                                    <button onClick={openNewAccountModal}>
                                         <div className="icon"> <PlusIcon width={24} height={24}/> </div>
                                         <span>Cadastre uma nova conta</span>
                                     </button>

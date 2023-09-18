@@ -1,4 +1,4 @@
-import * as Dialog from '@radix-ui/react-dialog';
+import * as RdxDialog from '@radix-ui/react-dialog';
 import { ContainerStyle } from './style';
 import React from 'react';
 import { Cross2Icon } from '@radix-ui/react-icons';
@@ -13,14 +13,14 @@ interface ModalProps {
 
 export function Modal({ open, title, children, rightAction, onClose }: ModalProps) {
     return (
-        <Dialog.Root open={open} onOpenChange={onClose}>
+        <RdxDialog.Root open={open} onOpenChange={onClose}>
 
-            <Dialog.Portal>
+            <RdxDialog.Portal>
 
                 <ContainerStyle>
-                    <Dialog.Overlay className='overlay'/>
+                    <RdxDialog.Overlay className='overlay'/>
 
-                    <Dialog.Content className='content'>
+                    <RdxDialog.Content className='content'>
                         <header>
                             <button onClick={onClose}>
                                 <Cross2Icon width={24} height={24}/>
@@ -36,13 +36,13 @@ export function Modal({ open, title, children, rightAction, onClose }: ModalProp
                         <div className='main'>
                             {children}
                         </div>
-                    </Dialog.Content>
+                    </RdxDialog.Content>
 
                 </ContainerStyle>
 
-            </Dialog.Portal>
+            </RdxDialog.Portal>
 
-        </Dialog.Root>
+        </RdxDialog.Root>
     );
 }
 
