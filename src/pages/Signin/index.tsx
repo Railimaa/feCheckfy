@@ -32,6 +32,7 @@ export function Signin() {
                     type="password"
                     placeholder='Senha'
                     error={errors.password?.message}
+                    showPassword
                     {...register('password')}
                 />
 

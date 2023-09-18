@@ -49,7 +49,7 @@ interface DropdownMenuItemProps {
 
 function DropdownMenuItem({ children, style, colorHover, onSelect }: DropdownMenuItemProps) {
     return (
-        <RdxDropdownMenu.Item style={{ border: 'none', outline: 'none'}} onSelect={onSelect} >
+        <RdxDropdownMenu.Item style={{ border: 'none', outline: 'none'}} onSelect={onSelect}>
 
             <ContainerItem style={style} color={colorHover}>
                 {children}

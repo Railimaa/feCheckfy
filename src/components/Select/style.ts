@@ -1,6 +1,46 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+
+  .relative {
+    position: relative;
+
+    label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 12px;
+      padding-top: 10px;
+      z-index: 10;
+      color: #262626;
+      pointer-events: none;
+    }
+
+
+    .selected-value {
+        font-size: 12px;
+        left: 13px;
+        top: 4px;
+        transition: all 0.2s;
+      }
+
+  }
+
+
+  .error {
+
+    span {
+      color: #C92A2A;
+      font-size: 12px;
+      font-weight: normal;
+    }
+
+  }
+
+`;
+
 export const ContainerTrigger = styled.div`
+
 
     .trigger {
       position: relative;
@@ -15,14 +55,13 @@ export const ContainerTrigger = styled.div`
       color: #262626;
       outline: none;
 
-      &:focus {
-       border-color: '#495057';
-       transition: all;
-     }
+
 
      .icon {
       position: absolute;
       right: 0;
+      top: 50%;
+      transform: translateY(-50%);
      }
 
     }
@@ -31,6 +70,7 @@ export const ContainerTrigger = styled.div`
 export const ContainerContent = styled.div`
 
   .content {
+
     z-index: 99;
     overflow: hidden;
     background: #fff;
@@ -67,13 +107,12 @@ export const ContainerContent = styled.div`
     color: #343A40;
     padding: 8px;
     outline: none;
+    cursor: pointer;
 
     &:hover {
       background: #F8F9FA;
       border-radius: 8px;
       transition: all 0.1s;
     }
-
   }
-
 `;

@@ -26,7 +26,9 @@ export function NewAccountModal() {
                             placeholder='Nome da Conta'
                         />
 
-                        <Select error='Selecione uma fruta'/>
+                        <Select
+                            error='Voce precisa escolher'
+                        />
                     </div>
                 </Form>
 

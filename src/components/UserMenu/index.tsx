@@ -4,7 +4,7 @@ import { Container } from './style';
 import { useUserMenu } from './useUserMenu';
 
 export function UserMenu() {
-    const { logout } = useUserMenu();
+    const { signOut } = useUserMenu();
 
     return (
         <DropdownMenu.Root>
@@ -16,7 +16,7 @@ export function UserMenu() {
 
             <DropdownMenu.Content style={{ width: '130px' }}>
 
-                <DropdownMenu.Item style={{ justifyContent: 'space-between', }}  colorHover='#087F5B' onSelect={logout}>
+                <DropdownMenu.Item style={{ justifyContent: 'space-between', }}  colorHover='#087F5B' onSelect={signOut}>
                          Sair
                     <ExitIcon width={18} height={18} />
                 </DropdownMenu.Item>

@@ -1,15 +1,21 @@
 import * as RdxSelect from '@radix-ui/react-select';
-import { ContainerContent, ContainerTrigger } from './style';
+import { ContainerContent, ContainerTrigger, Container } from './style';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { FieldError } from '../FieldError';
 
 interface SelectProps {
   error?: string;
+  options?: {
+      value: string;
+      label: string;
+  }[];
 }
 
 export function Select({ error }: SelectProps) {
+
+
     return (
-        <div>
+        <Container>
             <RdxSelect.Root>
 
                 <ContainerTrigger color={error}>
@@ -43,9 +49,11 @@ export function Select({ error }: SelectProps) {
                                     <RdxSelect.ItemText>Banana</RdxSelect.ItemText>
                                 </RdxSelect.Item>
 
-                                <RdxSelect.Item value='laranja' className='item'>
-                                    <RdxSelect.ItemText className='item-text'>Laranja</RdxSelect.ItemText>
+                                <RdxSelect.Item value='Manga' className='item'>
+                                    <RdxSelect.ItemText>Manga</RdxSelect.ItemText>
                                 </RdxSelect.Item>
+
+
 
                             </RdxSelect.Viewport>
 
@@ -61,10 +69,13 @@ export function Select({ error }: SelectProps) {
 
             </RdxSelect.Root>
 
+
             {error && (
-                <FieldError message={error}/>
+                <div className='error'>
+                    <FieldError message={error} />
+                </div>
             )}
-        </div>
+        </Container>
     );
 }
 

@@ -2,6 +2,17 @@ import { styled } from 'styled-components';
 
 
 export const Container = styled.div`
+ position: relative;
+
+.show-password {
+  position: absolute;
+  top: 5%;
+  right: 0;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+}
 
 `;
 
