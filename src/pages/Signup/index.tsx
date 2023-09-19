@@ -37,6 +37,7 @@ export function Signup() {
                     type='password'
                     placeholder='Senha'
                     error={errors.password?.message}
+                    showPassword
                     {...register('password')}
                 />
 

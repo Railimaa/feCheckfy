@@ -8,7 +8,7 @@ export function UserMenu() {
 
     return (
         <DropdownMenu.Root>
-            <DropdownMenu.Trigger>
+            <DropdownMenu.Trigger style={{ border: 'none', outline: 'none' }}>
                 <Container>
                     <span>MA</span>
                 </Container>

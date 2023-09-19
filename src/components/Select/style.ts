@@ -6,35 +6,26 @@ export const Container = styled.div`
     position: relative;
 
     label {
+      font-size: 11px;
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      left: 12px;
-      padding-top: 10px;
+      left: 13px;
+      padding-top: 20px;
       z-index: 10;
       color: #262626;
       pointer-events: none;
     }
 
-
-    .selected-value {
-        font-size: 12px;
-        left: 13px;
-        top: 4px;
-        transition: all 0.2s;
-      }
-
   }
 
 
   .error {
-
     span {
       color: #C92A2A;
       font-size: 12px;
       font-weight: normal;
     }
-
   }
 
 `;

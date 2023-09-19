@@ -1,9 +1,25 @@
+import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
 import { Input } from '../../../../components/Input/input';
 import { InputCurrency } from '../../../../components/InputCurrency';
 import { Modal } from '../../../../components/Modal';
 import { Select } from '../../../../components/Select';
 import { Container, Form } from './style';
 import { useNewAccountModal } from './useNewAccountModal';
+
+const options = [
+    {
+        value: 'CHECKING',
+        label: 'Conta Corrente'
+    },
+    {
+        value: 'INVESTMENT',
+        label: 'Investimento'
+    },
+    {
+        value: 'CASH',
+        label: 'Dinheiro Fisíco'
+    },
+];
 
 export function NewAccountModal() {
     const { isNewAccountModalOpen, closeNewAccountModal } = useNewAccountModal();
@@ -27,8 +43,11 @@ export function NewAccountModal() {
                         />
 
                         <Select
-                            error='Voce precisa escolher'
+                            placeholder='Tipo'
+                            options={options}
                         />
+
+                        <ColorsDropdownInput />
                     </div>
                 </Form>
 

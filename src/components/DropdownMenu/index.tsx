@@ -11,9 +11,14 @@ function DropdownMenuRoot({ children }: { children: React.ReactNode }) {
     );
 }
 
-function DropdownMenuTrigger({ children }: { children: React.ReactNode }) {
+interface DropdownMenuTriggerProps {
+  children: React.ReactNode;
+  style?: CSSProperties;
+}
+
+function DropdownMenuTrigger({ children, style  }: DropdownMenuTriggerProps) {
     return (
-        <RdxDropdownMenu.Trigger style={{ outline: 'none', border: 'none' }}>
+        <RdxDropdownMenu.Trigger style={style}>
             {children}
         </RdxDropdownMenu.Trigger>
     );

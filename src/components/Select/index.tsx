@@ -5,17 +5,26 @@ import { FieldError } from '../FieldError';
 
 interface SelectProps {
   error?: string;
-  options?: {
+  placeholder?: string,
+  options: {
       value: string;
       label: string;
   }[];
 }
 
-export function Select({ error }: SelectProps) {
+export function Select({ error, placeholder, options }: SelectProps) {
 
 
     return (
         <Container>
+
+            <div className="relative">
+                <label>
+                    {placeholder}
+                </label>
+            </div>
+
+
             <RdxSelect.Root>
 
                 <ContainerTrigger color={error}>
@@ -31,40 +40,27 @@ export function Select({ error }: SelectProps) {
                 </ContainerTrigger>
 
                 <RdxSelect.Portal>
-
                     <ContainerContent>
-                        <RdxSelect.Content className='content'>
 
+                        <RdxSelect.Content className='content'>
                             <RdxSelect.ScrollUpButton className='scroll-up-button'>
                                 <ChevronUpIcon />
                             </RdxSelect.ScrollUpButton>
 
                             <RdxSelect.Viewport className='view-port'>
-
-                                <RdxSelect.Item value='apple' className='item'>
-                                    <RdxSelect.ItemText>Apple</RdxSelect.ItemText>
-                                </RdxSelect.Item>
-
-                                <RdxSelect.Item value='banana' className='item'>
-                                    <RdxSelect.ItemText>Banana</RdxSelect.ItemText>
-                                </RdxSelect.Item>
-
-                                <RdxSelect.Item value='Manga' className='item'>
-                                    <RdxSelect.ItemText>Manga</RdxSelect.ItemText>
-                                </RdxSelect.Item>
-
-
-
+                                {options.map((option) => (
+                                    <RdxSelect.Item value={option.value} key={option.value} className='item'>
+                                        <RdxSelect.ItemText>{option.label}</RdxSelect.ItemText>
+                                    </RdxSelect.Item>
+                                ))}
                             </RdxSelect.Viewport>
 
                             <RdxSelect.ScrollDownButton className='scroll-down-button'>
                                 <ChevronDownIcon />
                             </RdxSelect.ScrollDownButton>
-
                         </RdxSelect.Content>
 
                     </ContainerContent>
-
                 </RdxSelect.Portal>
 
             </RdxSelect.Root>

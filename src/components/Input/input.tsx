@@ -10,7 +10,7 @@ interface InputProps extends ComponentProps<'input'> {
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(({ error, showPassword, type, ...props }, ref) => {
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isPasswordVisible, setIsPasswordVisible] = useState(true);
 
     function handlePasswordVisible() {
         setIsPasswordVisible(prevState => !prevState);
@@ -21,7 +21,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(({ error, showPass
             <InputContainer
                 {...props}
                 ref={ref}
-                type={isPasswordVisible ? 'text' : type}
+                type={!isPasswordVisible ? 'text' : type}
                 color={error}
             />
 
