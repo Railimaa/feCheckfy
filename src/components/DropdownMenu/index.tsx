@@ -34,7 +34,7 @@ function DropdownMenuContent({ children, style, side }: DropdownMenuContentProps
     return (
         <RdxDropdownMenu.Portal>
 
-            <RdxDropdownMenu.Content side={side} style={{ zIndex: 50 }}>
+            <RdxDropdownMenu.Content side={side} style={{ zIndex: 99 }}>
 
                 <ContainerContent style={style}>
                     {children}

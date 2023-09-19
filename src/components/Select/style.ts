@@ -50,7 +50,7 @@ export const ContainerTrigger = styled.div`
 
      .icon {
       position: absolute;
-      right: 0;
+      right: 13px;
       top: 50%;
       transform: translateY(-50%);
      }

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+
     button {
       position: relative;
       text-align: left;
@@ -13,5 +14,12 @@ export const Container = styled.div`
       height: 52px;
       color: #262626;
       outline: none;
+    }
+
+    .icon-chevron-down {
+      position: absolute;
+      top: 50%;
+      right: 13px;
+      transform: translateY(-50%);
     }
 `;
