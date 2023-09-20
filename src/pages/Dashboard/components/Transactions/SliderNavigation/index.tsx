@@ -5,7 +5,7 @@ export function SliderNavigation() {
     const swiper = useSwiper();
 
     return (
-        <>
+        <div>
             <button
                 style={{
                     border: 'none',
@@ -46,6 +46,6 @@ export function SliderNavigation() {
             >
                 <ChevronRightIcon width={24} height={24} color='#343A40'/>
             </button>
-        </>
+        </div>
     );
 }

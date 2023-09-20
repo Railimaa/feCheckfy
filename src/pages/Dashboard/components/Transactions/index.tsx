@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { MONTHS } from '../../../../utils/contants';
+import { MONTHS } from '../../../../utils/constants';
 import { FilterIcon } from '../../../../assets/icons/FilterIcon';
 import { Card, Container, Content, Header } from './style';
 import { SliderOption } from './SliderOption';

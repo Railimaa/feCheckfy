@@ -13,7 +13,7 @@ export const Container = styled.div`
       left: 13px;
       padding-top: 20px;
       z-index: 10;
-      color: #262626;
+      color: #495057;
       pointer-events: none;
     }
 
@@ -39,9 +39,8 @@ export const ContainerTrigger = styled.div`
       outline: none;
 
       span {
-        color: #262626;
+        color: #495057;
         font-size: 16px;
-
         font-weight: normal;
       }
 

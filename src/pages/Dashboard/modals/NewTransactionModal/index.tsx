@@ -1,5 +1,5 @@
 import { Button } from '../../../../components/Button';
-import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
+import { DatePickerInput } from '../../../../components/DatePickerInput';
 import { Input } from '../../../../components/Input/input';
 import { InputCurrency } from '../../../../components/InputCurrency';
 import { Modal } from '../../../../components/Modal';
@@ -52,6 +52,7 @@ export function NewTransactionModal() {
             onClose={closeNewTransactionModal}
             title={isExpense ? 'Nova Despesa' : 'Nova Receita'}
         >
+
             <Form>
                 <span id='saldo'>Valor {isExpense ? 'da despesa' : 'da receita'}</span>
                 <div className="title-form">
@@ -76,7 +77,7 @@ export function NewTransactionModal() {
                         options={optionsPag}
                     />
 
-                    <ColorsDropdownInput />
+                    <DatePickerInput />
                 </div>
 
                 <div className="button-submit">
