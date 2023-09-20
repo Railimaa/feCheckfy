@@ -32,12 +32,17 @@ export const ContainerStyle = styled.div`
   background: #fff;
   box-shadow: 0px 11px 20px 0px rgba(0, 0, 0, 0.10);
   position: fixed;
-  top: 20%;
+  top: 8%;
   left: 50%;
   transform: translateY(-50%);
   transform: translateX(-50%);
   z-index: 51;
   outline: none;
+
+  @media(min-height: 1000px) {
+    top: 20%;
+
+  }
 
   header {
     display: flex;
@@ -64,14 +69,16 @@ export const ContainerStyle = styled.div`
       width: 48px;
       height: 48px;
     }
+
+
+      span {
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        color: #212529;
+      }
   }
 
-  span {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: -1px;
-    color: #212529;
-  }
 
 
   .main {

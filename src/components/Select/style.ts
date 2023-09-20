@@ -20,18 +20,10 @@ export const Container = styled.div`
   }
 
 
-  .error {
-    span {
-      color: #C92A2A;
-      font-size: 12px;
-      font-weight: normal;
-    }
-  }
 
 `;
 
 export const ContainerTrigger = styled.div`
-
 
     .trigger {
       position: relative;
@@ -46,7 +38,12 @@ export const ContainerTrigger = styled.div`
       color: #262626;
       outline: none;
 
+      span {
+        color: #262626;
+        font-size: 16px;
 
+        font-weight: normal;
+      }
 
      .icon {
       position: absolute;
@@ -54,14 +51,12 @@ export const ContainerTrigger = styled.div`
       top: 50%;
       transform: translateY(-50%);
      }
-
     }
 `;
 
 export const ContainerContent = styled.div`
 
   .content {
-
     z-index: 99;
     overflow: hidden;
     background: #fff;

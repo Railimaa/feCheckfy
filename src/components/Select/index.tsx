@@ -14,34 +14,28 @@ interface SelectProps {
 
 export function Select({ error, placeholder, options }: SelectProps) {
 
-
     return (
         <Container>
-
             <div className="relative">
                 <label>
                     {placeholder}
                 </label>
             </div>
 
-
             <RdxSelect.Root>
-
                 <ContainerTrigger color={error}>
-                    <RdxSelect.Trigger className='trigger'>
+                    <RdxSelect.Trigger className='trigger' >
 
                         <RdxSelect.Value />
 
                         <RdxSelect.Icon className='icon'>
                             <ChevronDownIcon width={24} height={24} color='#343A40'/>
                         </RdxSelect.Icon>
-
                     </RdxSelect.Trigger>
                 </ContainerTrigger>
 
                 <RdxSelect.Portal>
                     <ContainerContent>
-
                         <RdxSelect.Content className='content'>
                             <RdxSelect.ScrollUpButton className='scroll-up-button'>
                                 <ChevronUpIcon />
@@ -59,7 +53,6 @@ export function Select({ error, placeholder, options }: SelectProps) {
                                 <ChevronDownIcon />
                             </RdxSelect.ScrollDownButton>
                         </RdxSelect.Content>
-
                     </ContainerContent>
                 </RdxSelect.Portal>
 
@@ -67,9 +60,7 @@ export function Select({ error, placeholder, options }: SelectProps) {
 
 
             {error && (
-                <div className='error'>
-                    <FieldError message={error} />
-                </div>
+                <FieldError message={error} />
             )}
         </Container>
     );
