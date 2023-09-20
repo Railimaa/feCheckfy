@@ -41,7 +41,6 @@ export const ContainerStyle = styled.div`
 
   @media(min-height: 1000px) {
     top: 20%;
-
   }
 
   header {

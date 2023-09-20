@@ -21,7 +21,7 @@ function PopoverTrigger({ children }: { children: React.ReactNode }) {
 function PopoverContent({ children }: { children: React.ReactNode }) {
     return (
         <RdxPopover.Portal>
-            <RdxPopover.Content style={{ zIndex: '99' }}>
+            <RdxPopover.Content style={{ zIndex: '99'}} side='top'>
                 <ContainerContent>
                     {children}
                 </ContainerContent>

@@ -3,13 +3,14 @@ import { FieldError } from '../FieldError';
 import { Container } from './style';
 import { formatDate } from '../../utils/formatDate';
 import { Popover } from '../Popover';
+import { DatePicker } from '../DatePicker';
 
 interface DatePickerInputProps {
   error?: string;
 }
 
 export function DatePickerInput({ error }: DatePickerInputProps) {
-    const [selectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     return (
         <Container color={error}>
@@ -22,7 +23,7 @@ export function DatePickerInput({ error }: DatePickerInputProps) {
                 </Popover.Trigger>
 
                 <Popover.Content>
-                    Ola
+                    <DatePicker value={selectedDate} onChange={date => setSelectedDate(date)} />
                 </Popover.Content>
             </Popover.Root>
 

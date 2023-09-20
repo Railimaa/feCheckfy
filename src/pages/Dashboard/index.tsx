@@ -34,7 +34,6 @@ export function Dashboard() {
 
                 <NewAccountModal />
                 <NewTransactionModal />
-
             </Container>
         </DashboardProvider>
     );
