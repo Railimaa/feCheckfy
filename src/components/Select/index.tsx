@@ -6,13 +6,19 @@ import { FieldError } from '../FieldError';
 interface SelectProps {
   error?: string;
   placeholder?: string,
+  onChange?: (value: string) => void;
+  value?: string;
   options: {
       value: string;
       label: string;
   }[];
 }
 
-export function Select({ error, placeholder, options }: SelectProps) {
+export function Select({ error, placeholder, onChange, value, options }: SelectProps) {
+
+    function handleChange(value: string) {
+        onChange?.(value);
+    }
 
     return (
         <Container>
@@ -22,7 +28,7 @@ export function Select({ error, placeholder, options }: SelectProps) {
                 </label>
             </div>
 
-            <RdxSelect.Root>
+            <RdxSelect.Root value={value} onValueChange={handleChange}>
                 <ContainerTrigger color={error}>
                     <RdxSelect.Trigger className='trigger' >
 
@@ -43,8 +49,14 @@ export function Select({ error, placeholder, options }: SelectProps) {
 
                             <RdxSelect.Viewport className='view-port'>
                                 {options.map((option) => (
-                                    <RdxSelect.Item value={option.value} key={option.value} className='item'>
-                                        <RdxSelect.ItemText>{option.label}</RdxSelect.ItemText>
+                                    <RdxSelect.Item
+                                        value={option.value}
+                                        key={option.value}
+                                        className='item'
+                                    >
+                                        <RdxSelect.ItemText>
+                                            {option.label}
+                                        </RdxSelect.ItemText>
                                     </RdxSelect.Item>
                                 ))}
                             </RdxSelect.Viewport>

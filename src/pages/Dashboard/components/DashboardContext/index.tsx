@@ -16,7 +16,7 @@ export const DashboardContext = createContext({} as DashboardContextValue);
 
 
 export function DashboardProvider({ children }: { children: React.ReactNode }) {
-    const [arValuesVisible, setArValuesVisible] = useState(true);
+    const [arValuesVisible, setArValuesVisible] = useState(false);
     const [isNewAccountModalOpen, setIsNewAccountModalOpen] = useState(false);
     const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
     const [newTransactionTypeModal, setNewTransactionTypeModal] = useState<'INCOME' | 'EXPENSE' | null>(null);

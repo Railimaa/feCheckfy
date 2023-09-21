@@ -20,7 +20,7 @@ export const Form = styled.form`
     align-items: center;
     gap: 8px;
 
-    span {
+    .span-saldo span {
       font-size: 18px;
       color: #868E96;
       letter-spacing: -0.5px;

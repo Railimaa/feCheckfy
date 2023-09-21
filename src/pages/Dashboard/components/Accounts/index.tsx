@@ -19,7 +19,8 @@ export function Accounts() {
         toogleValueVisibility,
         isLoading,
         accounts,
-        openNewAccountModal
+        openNewAccountModal,
+        currentBalance,
     }  = useAccounts();
 
     const hasAccounts = accounts.length > 0;
@@ -40,7 +41,7 @@ export function Accounts() {
                         <strong
                             style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
                         >
-                            {formatCurrency(1000)}
+                            {formatCurrency(currentBalance)}
                         </strong>
 
                         <button type='button' onClick={toogleValueVisibility}>
@@ -83,32 +84,16 @@ export function Accounts() {
                                         <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
                                     </div>
 
-                                    <SwiperSlide>
-                                        <AccountCard
-                                            color='#7950F2'
-                                            name='Nubank'
-                                            balance={1000.2}
-                                            type='CHECKING'
-                                        />
-                                    </SwiperSlide>
-
-                                    <SwiperSlide>
-                                        <AccountCard
-                                            color='#333'
-                                            name='XP'
-                                            balance={10000}
-                                            type='INVESTMENT'
-                                        />
-                                    </SwiperSlide>
-
-                                    <SwiperSlide>
-                                        <AccountCard
-                                            color='#0f0'
-                                            name='Carteira'
-                                            balance={75.90}
-                                            type='CASH'
-                                        />
-                                    </SwiperSlide>
+                                    {accounts.map((account) => (
+                                        <SwiperSlide key={account.id}>
+                                            <AccountCard
+                                                color={account.color}
+                                                name={account.name}
+                                                balance={account.initialBalance}
+                                                type={account.type}
+                                            />
+                                        </SwiperSlide>
+                                    ))}
                                 </Swiper>
                             </div>
 

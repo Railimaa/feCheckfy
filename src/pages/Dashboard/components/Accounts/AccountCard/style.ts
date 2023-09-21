@@ -13,7 +13,6 @@ export const Container = styled.div`
   border-bottom: 4px solid ${({ color }) => color};
 
   .content {
-
     span {
       display: block;
       margin-top: 16px;
@@ -24,7 +23,6 @@ export const Container = styled.div`
   }
 
   .saldo {
-
     span {
       display: block;
       color: #343A40;

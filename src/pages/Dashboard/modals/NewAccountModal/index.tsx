@@ -1,3 +1,4 @@
+import { Controller } from 'react-hook-form';
 import { Button } from '../../../../components/Button';
 import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
 import { Input } from '../../../../components/Input/input';
@@ -23,36 +24,80 @@ const options = [
 ];
 
 export function NewAccountModal() {
-    const { isNewAccountModalOpen, closeNewAccountModal } = useNewAccountModal();
+    const {
+        isNewAccountModalOpen,
+        closeNewAccountModal,
+        handleSubmit,
+        register,
+        errors,
+        control,
+        isLoadingButton
+    } = useNewAccountModal();
 
     return (
         <Container>
             <Modal title="Nova Conta" open={isNewAccountModalOpen} onClose={closeNewAccountModal}>
 
-                <Form>
-                    <span id='saldo'>Saldo</span>
+                <Form onSubmit={handleSubmit}>
+                    <span id='saldo'>Saldo Inicial</span>
                     <div className="title-form">
-                        <span>R$</span>
-                        <InputCurrency />
+                        <span className='span-saldo'>R$</span>
+
+                        <Controller
+                            control={control}
+                            name='initialBalance'
+                            defaultValue='0'
+                            render={({ field: { onChange, value }}) => (
+                                <InputCurrency
+                                    error={errors.initialBalance?.message}
+                                    onChange={onChange}
+                                    value={value}
+                                />
+                            )}
+                        />
                     </div>
 
                     <div className="inputs-form">
                         <Input
                             type='text'
-                            name='name'
                             placeholder='Nome da Conta'
+                            {...register('name')}
+                            error={errors.name?.message}
                         />
 
-                        <Select
-                            placeholder='Tipo'
-                            options={options}
+                        <Controller
+                            control={control}
+                            name='type'
+                            defaultValue='CHECKING'
+                            render={({ field: { onChange, value } }) => (
+                                <Select
+                                    placeholder='Tipo'
+                                    options={options}
+                                    error={errors.type?.message}
+                                    onChange={onChange}
+                                    value={value}
+                                />
+                            )}
+
                         />
 
-                        <ColorsDropdownInput />
+                        <Controller
+                            control={control}
+                            name='color'
+                            defaultValue=''
+                            render={({ field: { onChange, value } }) => (
+                                <ColorsDropdownInput
+                                    error={errors.color?.message}
+                                    onChange={onChange}
+                                    value={value}
+                                />
+                            )}
+                        />
+
                     </div>
 
                     <div className="button-submit">
-                        <Button>Criar Conta</Button>
+                        <Button isLoading={isLoadingButton}>Criar</Button>
                     </div>
                 </Form>
 
