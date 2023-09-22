@@ -7,7 +7,8 @@ import { Select } from '../../../../components/Select';
 import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
 import { Button } from '../../../../components/Button';
 import { useEditAccountModal } from './useEditAccountModal';
-import { TrashIcon } from '@radix-ui/react-icons';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
+import { Trash } from '../../../../assets/icons/Trash';
 
 
 const options = [
@@ -35,8 +36,14 @@ export function EditAccountModal() {
         isLoadingButton,
         isEditAccountModalOpen,
         closeEditAccountModal,
+        isDeleteModalOpen,
+        handleCloseDeleteModal,
+        handleOpenDeleteModal
     } = useEditAccountModal();
 
+    if (isDeleteModalOpen) {
+        return <ConfirmDeleteModal onClose={handleCloseDeleteModal} />;
+    }
 
     return (
         <Container>
@@ -45,13 +52,11 @@ export function EditAccountModal() {
                 open={isEditAccountModalOpen}
                 onClose={closeEditAccountModal}
                 rightAction={
-                    <button>
-                        <TrashIcon color='#C92A2A' width={24} height={24}/>
+                    <button onClick={handleOpenDeleteModal}>
+                        <Trash color='#C92A2A'/>
                     </button>
                 }
             >
-
-
 
                 <Form onSubmit={handleSubmit}>
                     <span id='saldo'>Saldo Inicial</span>

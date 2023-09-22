@@ -2,7 +2,7 @@ import { z } from 'zod';
 import { useDashboardContext } from '../../components/DashboardContext/useDashboardContext';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+import {  useState } from 'react';
 import { bankAccountService } from '../../../../services/bankAccountService';
 import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
 import toast from 'react-hot-toast';
@@ -28,7 +28,15 @@ export function useEditAccountModal() {
     } = useDashboardContext();
 
     const [isLoadingButton, setIsLoadingButton] = useState(false);
+    const [isDeleteModalOpen, setIsDeleteModalVisible] = useState(false);
 
+    function handleCloseDeleteModal() {
+        setIsDeleteModalVisible(false);
+    }
+
+    function handleOpenDeleteModal()  {
+        setIsDeleteModalVisible(true);
+    }
 
     const {
         handleSubmit: hookFormHandleSubmit,
@@ -75,5 +83,8 @@ export function useEditAccountModal() {
         control,
         isLoadingButton,
         isAccountSelectedEdit,
+        handleOpenDeleteModal,
+        handleCloseDeleteModal,
+        isDeleteModalOpen
     };
 }

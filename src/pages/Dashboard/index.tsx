@@ -32,8 +32,8 @@ export function Dashboard() {
                         </Main>
 
                         <Fab />
-                        <NewAccountModal />
                         <NewTransactionModal />
+                        <NewAccountModal />
                         {isAccountSelectedEdit && (
                             <EditAccountModal />
                         )}
