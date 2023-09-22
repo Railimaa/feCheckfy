@@ -10,7 +10,10 @@ import { useQueryClient } from 'react-query';
 
 const schema = z.object({
     name: z.string().nonempty('Nome da conta é obrigatório.'),
-    initialBalance: z.string().nonempty('Saldo inicial é obrigatório.'),
+    initialBalance: z.union([
+        z.string().nonempty('Saldo inicial é obrigatório.'),
+        z.number()
+    ]),
     color: z.string().nonempty('Cor é obrigatório.'),
     type: z.enum(['CHECKING',  'INVESTMENT',  'CASH']),
 });
@@ -18,49 +21,59 @@ const schema = z.object({
 type FormData = z.infer<typeof schema>
 
 export function useEditAccountModal() {
-    const { isNewAccountModalOpen, closeNewAccountModal } = useDashboardContext();
+    const {
+        isEditAccountModalOpen,
+        closeEditAccountModal,
+        isAccountSelectedEdit
+    } = useDashboardContext();
+
     const [isLoadingButton, setIsLoadingButton] = useState(false);
+
 
     const {
         handleSubmit: hookFormHandleSubmit,
         register,
         formState: { errors },
         control,
-        reset
     } = useForm<FormData>({
         resolver: zodResolver(schema),
-
+        defaultValues: {
+            name: isAccountSelectedEdit?.name,
+            initialBalance: isAccountSelectedEdit?.initialBalance,
+            color: isAccountSelectedEdit?.color,
+            type: isAccountSelectedEdit?.type
+        }
     });
-
 
     const queryClient = useQueryClient();
     const handleSubmit = hookFormHandleSubmit(async (data) => {
         try {
             setIsLoadingButton(true);
 
-            await bankAccountService.create({
+            await bankAccountService.update({
                 ...data,
-                initialBalance: currencyStringToNumber(data.initialBalance)
+                initialBalance: currencyStringToNumber(data.initialBalance),
+                id: isAccountSelectedEdit!.id
             });
 
             queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
-            toast.success('Conta cadastrada com sucesso!');
-            closeNewAccountModal();
-            reset();
+            toast.success('Conta editada com sucesso!');
+            closeEditAccountModal();
         } catch {
-            toast.error('Erro ao cadastrar a conta!');
+            toast.error('Erro ao editar a conta!');
         } finally {
             setIsLoadingButton(false);
         }
     });
 
     return {
-        isNewAccountModalOpen,
-        closeNewAccountModal,
+        isEditAccountModalOpen,
+        closeEditAccountModal,
         handleSubmit,
         register,
         errors,
         control,
-        isLoadingButton
+        isLoadingButton,
+        isAccountSelectedEdit,
     };
 }

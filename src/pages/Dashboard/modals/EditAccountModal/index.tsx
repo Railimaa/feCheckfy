@@ -7,6 +7,7 @@ import { Select } from '../../../../components/Select';
 import { ColorsDropdownInput } from '../../../../components/ColorsDropdownInput';
 import { Button } from '../../../../components/Button';
 import { useEditAccountModal } from './useEditAccountModal';
+import { TrashIcon } from '@radix-ui/react-icons';
 
 
 const options = [
@@ -27,18 +28,30 @@ const options = [
 
 export function EditAccountModal() {
     const {
-        isNewAccountModalOpen,
-        closeNewAccountModal,
         handleSubmit,
         register,
         errors,
         control,
-        isLoadingButton
+        isLoadingButton,
+        isEditAccountModalOpen,
+        closeEditAccountModal,
     } = useEditAccountModal();
+
 
     return (
         <Container>
-            <Modal title="Nova Conta" open={isNewAccountModalOpen} onClose={closeNewAccountModal}>
+            <Modal
+                title={'Editar Conta'}
+                open={isEditAccountModalOpen}
+                onClose={closeEditAccountModal}
+                rightAction={
+                    <button>
+                        <TrashIcon color='#C92A2A' width={24} height={24}/>
+                    </button>
+                }
+            >
+
+
 
                 <Form onSubmit={handleSubmit}>
                     <span id='saldo'>Saldo Inicial</span>
@@ -48,7 +61,7 @@ export function EditAccountModal() {
                         <Controller
                             control={control}
                             name='initialBalance'
-                            defaultValue='0'
+                            defaultValue={0}
                             render={({ field: { onChange, value }}) => (
                                 <InputCurrency
                                     error={errors.initialBalance?.message}
@@ -99,7 +112,7 @@ export function EditAccountModal() {
                     </div>
 
                     <div className="button-submit">
-                        <Button isLoading={isLoadingButton}>Criar</Button>
+                        <Button isLoading={isLoadingButton}>Salvar</Button>
                     </div>
                 </Form>
 

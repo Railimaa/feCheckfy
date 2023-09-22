@@ -12,6 +12,10 @@ export const Container = styled.div`
   height: 200px;
   border-bottom: 4px solid ${({ color }) => color};
 
+  &:hover {
+    cursor: pointer;
+  }
+
   .content {
     span {
       display: block;

@@ -1,5 +1,6 @@
 
 import { BankAccountTypeIcon } from '../../../../../assets/icons/BankAccountTypeIcon';
+import { BankAccount } from '../../../../../types/bankAccount';
 import { formatCurrency } from '../../../../../utils/formatCurrency';
 import { useDashboardContext } from '../../DashboardContext/useDashboardContext';
 
@@ -7,18 +8,16 @@ import { Container } from './style';
 
 
 interface AccountCardProps {
-  color: string;
-  name: string;
-  balance: number;
-  type: 'CASH' | 'CHECKING' | 'INVESTMENT'
+  account: BankAccount;
 }
 
+export function AccountCard({ account }: AccountCardProps) {
+    const { color, name, currentBalance, type } = account;
+    const { arValuesVisible, openEditAccountModal } = useDashboardContext();
 
-export function AccountCard({ color, name, balance, type }: AccountCardProps) {
-    const { arValuesVisible } = useDashboardContext();
 
     return (
-        <Container color={color} >
+        <Container color={color} role='button' onClick={() => openEditAccountModal(account)}>
 
             <div className='content'>
                 <BankAccountTypeIcon type={type} />
@@ -30,7 +29,7 @@ export function AccountCard({ color, name, balance, type }: AccountCardProps) {
                 <span
                     style={{ filter: arValuesVisible ? 'blur(6px)' : 'none' }}
                 >
-                    {formatCurrency(balance)}
+                    {formatCurrency(currentBalance)}
                 </span>
 
                 <small>Saldo atual</small>

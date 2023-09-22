@@ -10,7 +10,7 @@ export function Button({ isLoading, disabled, children, ...props }: ButtonProps)
     return (
         <ButtonStyle
             {...props}
-            disabled={disabled || isLoading}
+            disabled={disabled || isLoading }
         >
             {!isLoading && children}
 
