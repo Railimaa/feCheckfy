@@ -3,7 +3,6 @@ import { BankAccountTypeIcon } from '../../../../../assets/icons/BankAccountType
 import { BankAccount } from '../../../../../types/bankAccount';
 import { formatCurrency } from '../../../../../utils/formatCurrency';
 import { useDashboardContext } from '../../DashboardContext/useDashboardContext';
-
 import { Container } from './style';
 
 

@@ -5,10 +5,14 @@ import { Container } from './style';
 
 
 interface ConfirmDeleteModalProps {
+  onConfirm: () => void;
   onClose: () => void;
+  isLoading: boolean;
+  title?: string;
+  description?: string;
 }
 
-export function ConfirmDeleteModal({ onClose }: ConfirmDeleteModalProps) {
+export function ConfirmDeleteModal({ onConfirm, onClose, isLoading, title, description }: ConfirmDeleteModalProps) {
     return (
         <Modal
             open
@@ -20,18 +24,29 @@ export function ConfirmDeleteModal({ onClose }: ConfirmDeleteModalProps) {
                     <Trash />
                 </div>
 
-                <p>Tem certeza que deseja excluir esta conta?</p>
+                <p className='title'>Tem certeza que deseja excluir esta {title}?</p>
 
-                <p id='sub-title'>
-                 Ao excluir a conta, também serão excluídos todos
-                 os registros de receita e despesas relacionados.
-                </p>
+                {description && (
+                    <p className='description'>
+                        {description}
+                    </p>
+                )}
 
                 <div className="btn">
-                    <Button>Sim, desejo excluir</Button>
-                    <div className="cancel">
-                        <Button onClick={onClose}>Cancelar</Button>
-                    </div>
+                    <Button
+                        onClick={onConfirm}
+                        variant='danger'
+                        isLoading={isLoading}
+                    >
+                      Sim, desejo excluir
+                    </Button>
+
+                    <Button
+                        onClick={onClose}
+                        variant='ghost'
+                    >
+                      Cancelar
+                    </Button>
                 </div>
             </Container>
 

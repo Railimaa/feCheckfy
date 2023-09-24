@@ -52,7 +52,7 @@ export function Accounts() {
                     <div className="my-acc">
                         {!hasAccounts && (
                             <>
-                                <div className='title-acc-0' slot='container-start'>
+                                <div className='title-acc-0'>
                                     <strong>Minhas contas</strong>
                                 </div>
 

@@ -8,6 +8,14 @@ export const Container = styled.div`
   text-align: center;
   gap: 24px;
 
+  .title {
+    font-weight: bold;
+    width: 180px;
+  }
+
+  .description {
+    color: #343A40;
+    }
 
   .trash {
     display: flex;
@@ -19,31 +27,13 @@ export const Container = styled.div`
     border-radius: 999px;
   }
 
-  p {
-    font-weight: bold;
-  }
-
-  #sub-title {
-    font-weight: normal;
-  }
 
   .btn {
     width: 100%;
 
     button {
       width: 100%;
-      background: #C92A2A;
-    }
-
-    .cancel {
-      margin-top: 12px;
-
-      button {
-        background: #fff;
-        color: #343A40;
-        border: 1px solid #343A40;
-        border-radius: 16px;
-      }
+      margin-top: 16px;
     }
   }
 `;

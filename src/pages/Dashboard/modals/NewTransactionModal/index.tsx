@@ -42,7 +42,7 @@ const optionsPag = [
 
 
 export function NewTransactionModal() {
-    const { isNewTransactionModalOpen, closeNewTransactionModal, newTransactionTypeModal} = UseNewTransactionModal();
+    const { isNewTransactionModalOpen, closeNewTransactionModal, newTransactionTypeModal } = UseNewTransactionModal();
 
     const isExpense = newTransactionTypeModal === 'EXPENSE';
 

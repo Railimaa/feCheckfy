@@ -38,6 +38,22 @@ export function useEditAccountModal() {
         setIsDeleteModalVisible(true);
     }
 
+    async function handleDeleteAccount() {
+        try {
+            setIsLoadingButton(true);
+
+            await bankAccountService.deleted(isAccountSelectedEdit!.id);
+            queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
+            toast.success('Conta excluída com sucesso!');
+            handleCloseDeleteModal();
+            closeEditAccountModal();
+        } catch {
+            toast.error('Ocorreu um erro ao excluir a conta!');
+        } finally {
+            setIsLoadingButton(false);
+        }
+    }
+
     const {
         handleSubmit: hookFormHandleSubmit,
         register,
@@ -85,6 +101,7 @@ export function useEditAccountModal() {
         isAccountSelectedEdit,
         handleOpenDeleteModal,
         handleCloseDeleteModal,
-        isDeleteModalOpen
+        isDeleteModalOpen,
+        handleDeleteAccount
     };
 }

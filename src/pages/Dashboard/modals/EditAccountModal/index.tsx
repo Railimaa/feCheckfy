@@ -38,11 +38,19 @@ export function EditAccountModal() {
         closeEditAccountModal,
         isDeleteModalOpen,
         handleCloseDeleteModal,
-        handleOpenDeleteModal
+        handleOpenDeleteModal,
+        handleDeleteAccount
     } = useEditAccountModal();
 
     if (isDeleteModalOpen) {
-        return <ConfirmDeleteModal onClose={handleCloseDeleteModal} />;
+        return <ConfirmDeleteModal
+            isLoading={isLoadingButton}
+            onClose={handleCloseDeleteModal}
+            onConfirm={handleDeleteAccount}
+            title='conta'
+            description='Ao excluir a conta, também serão excluídos todos
+            os registros de receita e despesas relacionados.'
+        />;
     }
 
     return (
