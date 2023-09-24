@@ -43,14 +43,16 @@ export function EditAccountModal() {
     } = useEditAccountModal();
 
     if (isDeleteModalOpen) {
-        return <ConfirmDeleteModal
-            isLoading={isLoadingButton}
-            onClose={handleCloseDeleteModal}
-            onConfirm={handleDeleteAccount}
-            title='conta'
-            description='Ao excluir a conta, também serão excluídos todos
-            os registros de receita e despesas relacionados.'
-        />;
+        return (
+            <ConfirmDeleteModal
+                isLoading={isLoadingButton}
+                onClose={handleCloseDeleteModal}
+                onConfirm={handleDeleteAccount}
+                title='conta'
+                description='Ao excluir a conta, também serão excluídos todos
+                os registros de receita e despesas relacionados.'
+            />
+        );
     }
 
     return (

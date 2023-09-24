@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
 import { useWindowWidth } from '../../../../hooks/useWindowWidth';
 import { useDashboardContext } from '../DashboardContext/useDashboardContext';
-import { useQuery } from 'react-query';
-import { bankAccountService } from '../../../../services/bankAccountService';
+import { useBankAccounts } from '../../../../hooks/useBankAccounts';
 
 
 export function useAccounts() {
     const windowWidth = useWindowWidth();
+
     const {
         arValuesVisible,
         toogleValueVisibility,
@@ -18,16 +18,13 @@ export function useAccounts() {
         isEnd: false,
     });
 
-    const { data = [], isFetching } = useQuery({
-        queryKey: ['bankAccounts'],
-        queryFn: bankAccountService.getAll,
-    });
+    const { accounts, isFetching } = useBankAccounts();
 
     const currentBalance = useMemo(() => {
-        if (!data) return 0;
+        if (!accounts) return 0;
 
-        return data.reduce((total, accounts) => total + accounts.currentBalance, 0);
-    }, [data]);
+        return accounts.reduce((total, accounts) => total + accounts.currentBalance, 0);
+    }, [accounts]);
 
     return {
         sliderState,
@@ -36,7 +33,7 @@ export function useAccounts() {
         arValuesVisible,
         toogleValueVisibility,
         isLoading: isFetching,
-        accounts: data,
+        accounts,
         openNewAccountModal,
         currentBalance,
     };

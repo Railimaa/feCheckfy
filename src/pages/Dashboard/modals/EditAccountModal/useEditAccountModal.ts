@@ -44,11 +44,10 @@ export function useEditAccountModal() {
 
             await bankAccountService.deleted(isAccountSelectedEdit!.id);
             queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
-            toast.success('Conta excluída com sucesso!');
-            handleCloseDeleteModal();
+            toast.success('Conta deletada com sucesso!');
             closeEditAccountModal();
         } catch {
-            toast.error('Ocorreu um erro ao excluir a conta!');
+            toast.error('Erro ao deletar a conta!');
         } finally {
             setIsLoadingButton(false);
         }

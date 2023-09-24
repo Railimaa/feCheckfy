@@ -44,6 +44,7 @@ export function ConfirmDeleteModal({ onConfirm, onClose, isLoading, title, descr
                     <Button
                         onClick={onClose}
                         variant='ghost'
+                        disabled={isLoading}
                     >
                       Cancelar
                     </Button>

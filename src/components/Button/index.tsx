@@ -8,7 +8,6 @@ interface ButtonProps extends ComponentProps<'button'> {
 }
 
 export function Button({ isLoading, variant, disabled, children, ...props }: ButtonProps) {
-    const isDanger = variant === 'danger' ? '#fff' : '';
 
     return (
         <ButtonStyle
@@ -20,9 +19,7 @@ export function Button({ isLoading, variant, disabled, children, ...props }: But
 
             {isLoading && (
                 <div className="loader">
-                    <Spinner
-                        color={isDanger}
-                    />
+                    <Spinner />
                 </div>
             )}
 

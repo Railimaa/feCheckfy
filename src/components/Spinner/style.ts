@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 
 export const Container = styled.div`
+
   .loader {
     border: 3px solid ${({ color }) => color ? color : '#087F5B'};
     border-bottom-color: transparent;
