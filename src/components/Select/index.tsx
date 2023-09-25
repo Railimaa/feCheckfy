@@ -20,7 +20,6 @@ export function Select({ error, placeholder, onChange, value, options }: SelectP
         onChange?.(value);
     }
 
-
     return (
         <Container>
 

@@ -1,4 +1,4 @@
-import { BankAccount } from '../../types/bankAccount';
+import { BankAccount } from '../../types/BankAccount';
 import { httpClient } from '../httpClient';
 
 
