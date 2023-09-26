@@ -1,8 +1,8 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
-import { useQuery } from 'react-query';
 import { usersService } from '../services/usersService';
 import { toast } from 'react-hot-toast';
 import { PageLoader } from '../components/PageLoader';
+import { useQuery } from '@tanstack/react-query';
 
 interface AuthContextValue {
   signedIn: boolean;

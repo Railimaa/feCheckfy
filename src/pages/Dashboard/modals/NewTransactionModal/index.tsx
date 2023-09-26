@@ -20,7 +20,7 @@ export function NewTransactionModal() {
         control,
         accounts,
         categories,
-        isLoading
+        isLoading,
     } = UseNewTransactionModal();
 
     const isExpense = newTransactionTypeModal === 'EXPENSE';
@@ -90,7 +90,6 @@ export function NewTransactionModal() {
                                     value: account.id,
                                     label: account.name
                                 }))}
-
                             />
                         )}
                     />

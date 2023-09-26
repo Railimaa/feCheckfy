@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { bankAccountService } from '../../../../services/bankAccountService';
 import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
 import toast from 'react-hot-toast';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 const schema = z.object({
     name: z.string().nonempty('Nome da conta é obrigatório.'),
@@ -43,7 +43,7 @@ export function useNewAccountModal() {
                 initialBalance: currencyStringToNumber(data.initialBalance)
             });
 
-            queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
+            queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
             toast.success('Conta cadastrada com sucesso!');
             closeNewAccountModal();
             reset();

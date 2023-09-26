@@ -74,8 +74,14 @@ export const Card = styled.div`
   border-radius: 16px;
 
 
-  span {
+  #expense {
     color: #E03131;
+    letter-spacing: -0.5px;
+    font-weight: 500;
+  }
+
+  #income {
+    color: #2F9E44;
     letter-spacing: -0.5px;
     font-weight: 500;
   }

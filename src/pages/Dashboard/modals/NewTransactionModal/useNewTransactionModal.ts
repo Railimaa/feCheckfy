@@ -8,7 +8,7 @@ import { useBankAccounts } from '../../../../hooks/useBankAccountss';
 import { transactionsService } from '../../../../services/transactionsService';
 import toast from 'react-hot-toast';
 import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 const schema = z.object({
     value: z.string().nonempty('Informe o valor'),
@@ -40,8 +40,8 @@ export function UseNewTransactionModal() {
     });
 
     const queryClient = useQueryClient();
-    const { accounts } = useBankAccounts();
-    const { categories: categoriesList } = useCategories();
+    const { accounts, isFetching: isLoadingAccounts } = useBankAccounts();
+    const { categories: categoriesList, isFetching: isLoadingCategories } = useCategories();
 
     const handleSubmit = hookFormHandleSubmit(async (data) => {
         try {
@@ -84,6 +84,8 @@ export function UseNewTransactionModal() {
         control,
         accounts,
         categories,
-        isLoading
+        isLoading,
+        isLoadingAccounts,
+        isLoadingCategories
     };
 }

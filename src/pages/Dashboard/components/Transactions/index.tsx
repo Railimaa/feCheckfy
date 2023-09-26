@@ -11,6 +11,7 @@ import { Spinner } from '../../../../components/Spinner';
 import emptyState from '../../../../assets/images/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { FiltersModal } from './FiltersModal';
+import { formatDate } from '../../../../utils/formatDate';
 
 export function Transactions() {
     const {
@@ -20,7 +21,9 @@ export function Transactions() {
         isLoading,
         isFilterModalOpen,
         handleOpenFiltersModal,
-        handleCloseFiltersModal
+        handleCloseFiltersModal,
+        handleChangeMounth,
+        filters
     } = useTransaction();
 
     const hasTransaction = transactions.length > 0;
@@ -52,6 +55,11 @@ export function Transactions() {
                         <Swiper
                             slidesPerView={3}
                             centeredSlides
+                            initialSlide={filters.month}
+                            onSlideChange={swiper => {
+                                if (swiper.realIndex === filters.month) return;
+                                handleChangeMounth(swiper.realIndex);
+                            }}
                         >
                             <SliderNavigation />
                             {MONTHS.map((month, index) => (
@@ -79,35 +87,37 @@ export function Transactions() {
 
 
                         {(hasTransaction && !isLoading) && (
-                            <>
-                                <Card>
+                            transactions.map((transaction) => (
+                                <Card key={transaction.id}>
                                     <div className="content-transaction">
-                                        <CategoryIcon type='expense'/>
+                                        <CategoryIcon
+                                            type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
+                                            category={transaction.category?.icon}
+                                        />
 
                                         <div className="title-and-date">
-                                            <strong>Almoço</strong>
-                                            <span>12/03/2023</span>
+                                            <strong>{transaction.name}</strong>
+                                            <span>{formatDate(new Date(transaction.date))}</span>
                                         </div>
                                     </div>
-                                    <span
-                                        style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                                    >
-                                      - {formatCurrency(123)}
-                                    </span>
-                                </Card>
 
-                                <Card>
-                                    <div className="content-transaction">
-                                        <CategoryIcon type='income'/>
+                                    {transaction.type === 'EXPENSE' && (
+                                        <span id='expense'
+                                            style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                                        >
+                                          -{formatCurrency(transaction.value)}
+                                        </span>
+                                    )}
 
-                                        <div className="title-and-date">
-                                            <strong>Trabalho</strong>
-                                            <span>12/04/2023</span>
-                                        </div>
-                                    </div>
-                                    <span>{formatCurrency(123)}</span>
+                                    {transaction.type === 'INCOME' && (
+                                        <span id='income'
+                                            style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                                        >
+                                          +{formatCurrency(transaction.value)}
+                                        </span>
+                                    )}
                                 </Card>
-                            </>
+                            ))
                         )}
                     </Content>
 

@@ -6,7 +6,7 @@ import {  useState } from 'react';
 import { bankAccountService } from '../../../../services/bankAccountService';
 import { currencyStringToNumber } from '../../../../utils/currencyStringToNumber';
 import toast from 'react-hot-toast';
-import { useQueryClient } from 'react-query';
+import { useQueryClient } from '@tanstack/react-query';
 
 const schema = z.object({
     name: z.string().nonempty('Nome da conta é obrigatório.'),
@@ -43,7 +43,8 @@ export function useEditAccountModal() {
             setIsLoadingButton(true);
 
             await bankAccountService.deleted(isAccountSelectedEdit!.id);
-            queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
+            queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
+            queryClient.invalidateQueries({ queryKey: ['transactions'] });
             toast.success('Conta deletada com sucesso!');
             closeEditAccountModal();
         } catch {
@@ -79,7 +80,7 @@ export function useEditAccountModal() {
                 id: isAccountSelectedEdit!.id
             });
 
-            queryClient.invalidateQueries({ queryKey: 'bankAccounts' });
+            queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
             toast.success('Conta editada com sucesso!');
             closeEditAccountModal();
         } catch {

@@ -3,6 +3,7 @@ import { ContainerContent, ContainerTrigger, Container } from './style';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { FieldError } from '../FieldError';
 
+
 interface SelectProps {
   error?: string;
   placeholder?: string,
@@ -19,6 +20,7 @@ export function Select({ error, placeholder, onChange, value, options }: SelectP
     function handleChange(value: string) {
         onChange?.(value);
     }
+
 
     return (
         <Container>

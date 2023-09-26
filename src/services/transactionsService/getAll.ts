@@ -4,7 +4,7 @@ import { httpClient } from '../httpClient';
 
 type TransactionsResponse = Array<Transaction>;
 
-type TransactionsFilter = {
+export type TransactionsFilter = {
   month: number;
   year: number;
   bankAccountId?: string;
