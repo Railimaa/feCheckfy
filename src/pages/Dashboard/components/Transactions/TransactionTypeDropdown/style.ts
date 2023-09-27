@@ -8,6 +8,7 @@ export const Container = styled.div`
     gap: 8px;
     border: none;
     background: transparent;
+    outline: none;
 
     span {
       font-size: 14px;

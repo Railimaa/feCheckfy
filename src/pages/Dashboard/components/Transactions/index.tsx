@@ -12,6 +12,7 @@ import emptyState from '../../../../assets/images/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { FiltersModal } from './FiltersModal';
 import { formatDate } from '../../../../utils/formatDate';
+import { EditTransactionModal } from '../../modals/EditTransactionModal';
 
 export function Transactions() {
     const {
@@ -22,8 +23,9 @@ export function Transactions() {
         isFilterModalOpen,
         handleOpenFiltersModal,
         handleCloseFiltersModal,
-        handleChangeMounth,
-        filters
+        filters,
+        handleChangeFilters,
+        handleApplyFilters
     } = useTransaction();
 
     const hasTransaction = transactions.length > 0;
@@ -41,10 +43,14 @@ export function Transactions() {
                     <FiltersModal
                         open={isFilterModalOpen}
                         onClose={handleCloseFiltersModal}
+                        onApplyFilters={handleApplyFilters}
                     />
 
                     <Header>
-                        <TransactionTypeDropdown />
+                        <TransactionTypeDropdown
+                            onSelect={handleChangeFilters('type')}
+                            selectedType={filters.type}
+                        />
 
                         <button className='btn-filter' onClick={handleOpenFiltersModal}>
                             <FilterIcon />
@@ -57,8 +63,7 @@ export function Transactions() {
                             centeredSlides
                             initialSlide={filters.month}
                             onSlideChange={swiper => {
-                                if (swiper.realIndex === filters.month) return;
-                                handleChangeMounth(swiper.realIndex);
+                                handleChangeFilters('month')(swiper.realIndex);
                             }}
                         >
                             <SliderNavigation />
@@ -87,37 +92,45 @@ export function Transactions() {
 
 
                         {(hasTransaction && !isLoading) && (
-                            transactions.map((transaction) => (
-                                <Card key={transaction.id}>
-                                    <div className="content-transaction">
-                                        <CategoryIcon
-                                            type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
-                                            category={transaction.category?.icon}
-                                        />
+                            <>
+                                <EditTransactionModal
+                                    open
+                                    onClose={() => console.log('Fechou')}
+                                    transactionType='INCOME'
+                                />
 
-                                        <div className="title-and-date">
-                                            <strong>{transaction.name}</strong>
-                                            <span>{formatDate(new Date(transaction.date))}</span>
+                                {transactions.map((transaction) => (
+                                    <Card key={transaction.id}>
+                                        <div className="content-transaction">
+                                            <CategoryIcon
+                                                type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
+                                                category={transaction.category?.icon}
+                                            />
+
+                                            <div className="title-and-date">
+                                                <strong>{transaction.name}</strong>
+                                                <span>{formatDate(new Date(transaction.date))}</span>
+                                            </div>
                                         </div>
-                                    </div>
 
-                                    {transaction.type === 'EXPENSE' && (
-                                        <span id='expense'
-                                            style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                                        >
+                                        {transaction.type === 'EXPENSE' && (
+                                            <span id='expense'
+                                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                                            >
                                           -{formatCurrency(transaction.value)}
-                                        </span>
-                                    )}
+                                            </span>
+                                        )}
 
-                                    {transaction.type === 'INCOME' && (
-                                        <span id='income'
-                                            style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                                        >
+                                        {transaction.type === 'INCOME' && (
+                                            <span id='income'
+                                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
+                                            >
                                           +{formatCurrency(transaction.value)}
-                                        </span>
-                                    )}
-                                </Card>
-                            ))
+                                            </span>
+                                        )}
+                                    </Card>
+                                ))}
+                            </>
                         )}
                     </Content>
 

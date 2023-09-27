@@ -1,4 +1,4 @@
-import {  string, z } from 'zod';
+import { z } from 'zod';
 import { useDashboardContext } from '../../components/DashboardContext/useDashboardContext';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,8 +13,8 @@ import { useQueryClient } from '@tanstack/react-query';
 const schema = z.object({
     value: z.string().nonempty('Informe o valor'),
     name: z.string().nonempty('Infome o nome'),
-    categoryId: string().nonempty('Informe a categoria'),
-    bankAccountId: string().nonempty('Informe a conta bancária'),
+    categoryId: z.string().nonempty('Informe a categoria'),
+    bankAccountId: z.string().nonempty('Informe a conta bancária'),
     date: z.date()
 });
 

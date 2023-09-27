@@ -1,5 +1,5 @@
 import { createContext, useCallback, useState } from 'react';
-import { BankAccount } from '../../../../types/bankAccount';
+import { BankAccount } from '../../../../types/BankAccount';
 
 interface DashboardContextValue {
   arValuesVisible: boolean

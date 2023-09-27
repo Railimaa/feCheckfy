@@ -19,13 +19,24 @@ export function useTransaction() {
     }, [filters, refetchTransactions]);
 
 
-    function handleChangeMounth(month: number) {
-        setFilters(prevState => {
-            return {
+    function handleChangeFilters<TFilter extends keyof TransactionsFilter>(filter: TFilter) {
+        return (value: TransactionsFilter[TFilter]) => {
+            if (value === filters[filter]) return;
+
+            setFilters(prevState => ({
                 ...prevState,
-                month
-            };
-        });
+                [filter]: value,
+            }));
+        };
+    }
+
+    function handleApplyFilters({
+        bankAccountId,
+        year
+    }: { bankAccountId: string | undefined, year: number}) {
+        handleChangeFilters('bankAccountId')(bankAccountId);
+        handleChangeFilters('year')(year);
+        handleCloseFiltersModal();
     }
 
     function handleOpenFiltersModal() {
@@ -45,7 +56,8 @@ export function useTransaction() {
         isFilterModalOpen,
         handleOpenFiltersModal,
         handleCloseFiltersModal,
-        handleChangeMounth,
-        filters
+        filters,
+        handleChangeFilters,
+        handleApplyFilters
     };
 }
