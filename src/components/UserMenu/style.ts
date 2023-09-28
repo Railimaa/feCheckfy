@@ -15,5 +15,6 @@ export const Container = styled.div`
     font-weight: 500;
     font-size: 14px;
     letter-spacing: -0.5px;
+    text-transform: uppercase;
   }
 `;

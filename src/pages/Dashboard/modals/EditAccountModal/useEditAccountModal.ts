@@ -79,8 +79,8 @@ export function useEditAccountModal() {
                 initialBalance: currencyStringToNumber(data.initialBalance),
                 id: isAccountSelectedEdit!.id
             });
-
             queryClient.invalidateQueries({ queryKey: ['bankAccounts'] });
+            queryClient.invalidateQueries({ queryKey: ['transactions'] });
             toast.success('Conta editada com sucesso!');
             closeEditAccountModal();
         } catch {

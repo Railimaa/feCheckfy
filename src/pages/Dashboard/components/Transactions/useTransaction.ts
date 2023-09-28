@@ -2,11 +2,14 @@ import {  useEffect, useState } from 'react';
 import { useDashboardContext } from '../DashboardContext/useDashboardContext';
 import { useTransactions } from '../../../../hooks/useTransactions';
 import { TransactionsFilter } from '../../../../services/transactionsService/getAll';
+import { Transaction } from '../../../../types/Transaction';
 
 export function useTransaction() {
     const { arValuesVisible } = useDashboardContext();
-
     const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [transactionBeingEdited, setTransactionBeingEdited] = useState<null | Transaction>(null);
+
     const [filters, setFilters] = useState<TransactionsFilter>({
         month: new Date().getMonth(),
         year: new Date().getFullYear()
@@ -47,6 +50,17 @@ export function useTransaction() {
         setIsFilterModalOpen(false);
     }
 
+    function handleOpenEditModal(transaction: Transaction) {
+        setTransactionBeingEdited(transaction);
+        setIsEditModalOpen(true);
+    }
+
+    function handleCloseEditModal() {
+        setIsEditModalOpen(false);
+        setTransactionBeingEdited(null);
+
+    }
+
 
     return {
         arValuesVisible,
@@ -58,6 +72,10 @@ export function useTransaction() {
         handleCloseFiltersModal,
         filters,
         handleChangeFilters,
-        handleApplyFilters
+        handleApplyFilters,
+        isEditModalOpen,
+        handleOpenEditModal,
+        handleCloseEditModal,
+        transactionBeingEdited
     };
 }

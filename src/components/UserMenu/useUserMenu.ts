@@ -1,9 +1,8 @@
 import { useAuth } from '../../contexts/useAuth';
 
 export function useUserMenu() {
-    const { signOut } = useAuth();
+    const { signOut, user } = useAuth();
 
 
-
-    return { signOut };
+    return { signOut, user };
 }

@@ -72,6 +72,7 @@ export const Card = styled.div`
   background: #fff;
   padding: 16px;
   border-radius: 16px;
+  cursor: pointer;
 
 
   #expense {
@@ -91,8 +92,6 @@ export const Card = styled.div`
       align-items: center;
       gap: 12px;
       flex: 1;
-
-
 
       .title-and-date {
         strong {

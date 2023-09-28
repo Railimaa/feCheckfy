@@ -7,32 +7,59 @@ import { Modal } from '../../../../components/Modal';
 import { Select } from '../../../../components/Select';
 import { Form } from './style';
 import { useEditTransactionModal } from './useEditTransactionModal';
+import { Transaction } from '../../../../types/Transaction';
+import { Trash } from '../../../../assets/icons/Trash';
+import { ConfirmDeleteModal } from '../../../../components/ConfirmDeleteModal';
 
 interface EditTransactionModalProps {
-  transactionType: 'INCOME' | 'EXPENSE'
+  transaction: Transaction | null;
   open: boolean;
   onClose: () => void;
+  onCloseAll: () => void;
 }
 
 
 
-export function EditTransactionModal({ transactionType, open, onClose }: EditTransactionModalProps) {
+export function EditTransactionModal({ transaction, open, onClose, onCloseAll }: EditTransactionModalProps) {
     const {
         handleSubmit,
         errors,
         register,
         control,
         accounts,
-        categories
-    } = useEditTransactionModal(transactionType);
+        categories,
+        isLoading,
+        isDeleteModalOpen,
+        handleCloseDeleteModal,
+        handleOpenDeleteModal,
+        handleDeleteTransaction
+    } = useEditTransactionModal(transaction, onClose, onCloseAll);
 
-    const isExpense = transactionType === 'EXPENSE';
+
+    const isExpense = transaction?.type === 'EXPENSE';
+
+    if (isDeleteModalOpen) {
+        return (
+            <ConfirmDeleteModal
+                onClose={handleCloseDeleteModal}
+                isLoading={isLoading}
+                onConfirm={handleDeleteTransaction}
+                title={isExpense ? 'despesa' : 'receita'}
+            />
+        );
+
+    }
 
     return (
         <Modal
             open={open}
             onClose={onClose}
             title={isExpense ? 'Editar Despesa' : 'Editar Receita'}
+            rightAction={
+                <button onClick={handleOpenDeleteModal}>
+                    <Trash color='#C92A2A'/>
+                </button>
+            }
         >
 
             <Form onSubmit={handleSubmit}>
@@ -114,7 +141,7 @@ export function EditTransactionModal({ transactionType, open, onClose }: EditTra
                 </div>
 
                 <div className="button-submit">
-                    <Button>Salvar</Button>
+                    <Button isLoading={isLoading}>Salvar</Button>
                 </div>
             </Form>
 

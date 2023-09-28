@@ -25,7 +25,11 @@ export function Transactions() {
         handleCloseFiltersModal,
         filters,
         handleChangeFilters,
-        handleApplyFilters
+        handleApplyFilters,
+        handleOpenEditModal,
+        handleCloseEditModal,
+        isEditModalOpen,
+        transactionBeingEdited
     } = useTransaction();
 
     const hasTransaction = transactions.length > 0;
@@ -93,14 +97,17 @@ export function Transactions() {
 
                         {(hasTransaction && !isLoading) && (
                             <>
-                                <EditTransactionModal
-                                    open
-                                    onClose={() => console.log('Fechou')}
-                                    transactionType='INCOME'
-                                />
+                                {transactionBeingEdited && (
+                                    <EditTransactionModal
+                                        open={isEditModalOpen}
+                                        onClose={handleCloseEditModal}
+                                        transaction={transactionBeingEdited}
+                                        onCloseAll={handleCloseEditModal}
+                                    />
+                                )}
 
                                 {transactions.map((transaction) => (
-                                    <Card key={transaction.id}>
+                                    <Card key={transaction.id} role='button' onClick={() => console.log(handleOpenEditModal(transaction))}>
                                         <div className="content-transaction">
                                             <CategoryIcon
                                                 type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
