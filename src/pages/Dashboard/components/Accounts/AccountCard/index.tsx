@@ -1,6 +1,6 @@
 
 import { BankAccountTypeIcon } from '../../../../../assets/icons/BankAccountTypeIcon';
-import { BankAccount } from '../../../../../types/bankAccount';
+import { BankAccount } from '../../../../../types/BankAccount';
 import { formatCurrency } from '../../../../../utils/formatCurrency';
 import { useDashboardContext } from '../../DashboardContext/useDashboardContext';
 import { Container } from './style';
