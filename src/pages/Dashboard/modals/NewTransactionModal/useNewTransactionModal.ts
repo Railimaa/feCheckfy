@@ -34,9 +34,12 @@ export function UseNewTransactionModal() {
         formState: { errors },
         register,
         control,
-        reset
+        reset,
     } = useForm<FormData>({
         resolver: zodResolver(schema),
+        defaultValues: {
+            value: '0'
+        }
     });
 
     const queryClient = useQueryClient();
@@ -58,8 +61,8 @@ export function UseNewTransactionModal() {
             toast.success(
                 newTransactionTypeModal === 'EXPENSE' ? 'Despesa cadastrada com sucesso!' : 'Receita cadastrada com sucesso!'
             );
-            closeNewTransactionModal();
             reset();
+            closeNewTransactionModal();
         } catch {
             toast.error(
                 newTransactionTypeModal === 'EXPENSE' ? 'Ocorreu um erro ao cadastrar a despesa' : 'Ocorreu um erro ao cadastrar a receita'

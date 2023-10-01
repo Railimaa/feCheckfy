@@ -1,18 +1,16 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { MONTHS } from '../../../../utils/constants';
 import { FilterIcon } from '../../../../assets/icons/FilterIcon';
-import { Card, Container, Content, Header } from './style';
+import { Container, Content, Header } from './style';
 import { SliderOption } from './SliderOption';
 import { SliderNavigation } from './SliderNavigation';
-import { formatCurrency } from '../../../../utils/formatCurrency';
-import { CategoryIcon } from '../../../../assets/icons/categories/CategoryIcon';
 import { useTransaction } from './useTransaction';
 import { Spinner } from '../../../../components/Spinner';
 import emptyState from '../../../../assets/images/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { FiltersModal } from './FiltersModal';
-import { formatDate } from '../../../../utils/formatDate';
 import { EditTransactionModal } from '../../modals/EditTransactionModal';
+import { Card } from './Card';
 
 export function Transactions() {
     const {
@@ -107,35 +105,12 @@ export function Transactions() {
                                 )}
 
                                 {transactions.map((transaction) => (
-                                    <Card key={transaction.id} role='button' onClick={() => console.log(handleOpenEditModal(transaction))}>
-                                        <div className="content-transaction">
-                                            <CategoryIcon
-                                                type={transaction.type === 'EXPENSE' ? 'expense' : 'income'}
-                                                category={transaction.category?.icon}
-                                            />
-
-                                            <div className="title-and-date">
-                                                <strong>{transaction.name}</strong>
-                                                <span>{formatDate(new Date(transaction.date))}</span>
-                                            </div>
-                                        </div>
-
-                                        {transaction.type === 'EXPENSE' && (
-                                            <span id='expense'
-                                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                                            >
-                                          -{formatCurrency(transaction.value)}
-                                            </span>
-                                        )}
-
-                                        {transaction.type === 'INCOME' && (
-                                            <span id='income'
-                                                style={{ filter: arValuesVisible ? 'blur(12px)' : 'none' }}
-                                            >
-                                          +{formatCurrency(transaction.value)}
-                                            </span>
-                                        )}
-                                    </Card>
+                                    <Card
+                                        key={transaction.id}
+                                        transaction={transaction}
+                                        arValuesVisible={arValuesVisible}
+                                        handleOpenEditModal={handleOpenEditModal}
+                                    />
                                 ))}
                             </>
                         )}

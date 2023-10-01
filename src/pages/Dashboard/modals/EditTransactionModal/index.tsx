@@ -18,8 +18,6 @@ interface EditTransactionModalProps {
   onCloseAll: () => void;
 }
 
-
-
 export function EditTransactionModal({ transaction, open, onClose, onCloseAll }: EditTransactionModalProps) {
     const {
         handleSubmit,
@@ -47,7 +45,6 @@ export function EditTransactionModal({ transaction, open, onClose, onCloseAll }:
                 title={isExpense ? 'despesa' : 'receita'}
             />
         );
-
     }
 
     return (

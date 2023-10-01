@@ -83,7 +83,6 @@ export function ColorsDropdownInput({ error, onChange, value }: ColorsDropdownIn
                     </DropdownMenu.Content>
                 </DropdownMenu.Root>
 
-
             </Container>
 
             {error && (

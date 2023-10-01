@@ -58,7 +58,6 @@ export function useTransaction() {
     function handleCloseEditModal() {
         setIsEditModalOpen(false);
         setTransactionBeingEdited(null);
-
     }
 
 
