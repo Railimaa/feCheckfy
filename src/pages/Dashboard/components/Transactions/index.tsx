@@ -10,7 +10,7 @@ import emptyState from '../../../../assets/images/empty-state.svg';
 import { TransactionTypeDropdown } from './TransactionTypeDropdown';
 import { FiltersModal } from './FiltersModal';
 import { EditTransactionModal } from '../../modals/EditTransactionModal';
-import { Card } from './Card';
+import { TransactionCard } from './TransactionCard';
 
 export function Transactions() {
     const {
@@ -105,7 +105,7 @@ export function Transactions() {
                                 )}
 
                                 {transactions.map((transaction) => (
-                                    <Card
+                                    <TransactionCard
                                         key={transaction.id}
                                         transaction={transaction}
                                         arValuesVisible={arValuesVisible}

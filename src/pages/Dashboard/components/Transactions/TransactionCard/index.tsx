@@ -10,7 +10,7 @@ interface CardProps {
   handleOpenEditModal: (transaction: Transaction) => void;
 }
 
-export function Card({ transaction, arValuesVisible, handleOpenEditModal }: CardProps) {
+export function TransactionCard({ transaction, arValuesVisible, handleOpenEditModal }: CardProps) {
     return (
         <Container onClick={() => handleOpenEditModal(transaction)} role='button'>
             <div className="content-transaction">
