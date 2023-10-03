@@ -13,7 +13,7 @@ export function Button({ isLoading, variant, disabled, children, ...props }: But
         <ButtonStyle
             {...props}
             disabled={disabled || isLoading }
-            variant={variant}
+            color={variant}
         >
             {!isLoading && children}
 

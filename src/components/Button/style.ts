@@ -1,18 +1,18 @@
 import { styled } from 'styled-components';
 
-export const ButtonStyle = styled.button<{ variant?: 'danger' | 'ghost' }>`
+export const ButtonStyle = styled.button<{ color?: 'danger' | 'ghost' }>`
   padding-left: 24px;
   padding-right: 24px;
   border: none;
   background: #087F5B;
-  color: ${({ variant }) => variant === 'ghost' ? '#343A40' : '#fff'};
+  color: ${({ color }) => color === 'ghost' ? '#343A40' : '#fff'};
   font-weight: bold;
   height: 48px;
   border-radius: 16px;
   transition: all;
   margin-top: 4px;
-  background: ${({ variant }) => {
-        switch(variant) {
+  background: ${({ color }) => {
+        switch(color) {
         case 'danger':
             return '#C92A2A';
         case 'ghost':
@@ -21,12 +21,12 @@ export const ButtonStyle = styled.button<{ variant?: 'danger' | 'ghost' }>`
             return '#087F5B';
         }
     }};
-  border: ${({ variant }) => variant === 'ghost' ? '1px solid  #343A40' : 'none'};
+  border: ${({ color }) => color === 'ghost' ? '1px solid  #343A40' : 'none'};
 
   &:hover {
     transition: all 0.2s;
-    background: ${({ variant }) => {
-        switch(variant) {
+    background: ${({ color }) => {
+        switch(color) {
         case 'danger':
             return '#E03131';
         case 'ghost':
