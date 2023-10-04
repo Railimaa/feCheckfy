@@ -36,7 +36,11 @@ export function NewAccountModal() {
 
     return (
         <Container>
-            <Modal title="Nova Conta" open={isNewAccountModalOpen} onClose={closeNewAccountModal}>
+            <Modal
+                title="Nova Conta"
+                open={isNewAccountModalOpen}
+                onClose={closeNewAccountModal}
+            >
 
                 <Form onSubmit={handleSubmit}>
                     <span id='saldo'>Saldo Inicial</span>

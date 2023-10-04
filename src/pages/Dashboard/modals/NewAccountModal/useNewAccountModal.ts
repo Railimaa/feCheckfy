@@ -29,7 +29,6 @@ export function useNewAccountModal() {
         reset
     } = useForm<FormData>({
         resolver: zodResolver(schema),
-
     });
 
 
