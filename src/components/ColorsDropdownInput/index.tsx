@@ -66,7 +66,10 @@ export function ColorsDropdownInput({ error, onChange, value }: ColorsDropdownIn
                             )}
 
                             {selectedColor && (
-                                <ColorIcon color={selectedColor.color} bg={selectedColor.bg} />
+                                <ColorIcon
+                                    color={selectedColor.color}
+                                    bg={selectedColor.bg}
+                                />
                             )}
                         </div>
                     </DropdownMenu.Trigger>
