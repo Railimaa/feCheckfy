@@ -81,7 +81,10 @@ export function Accounts() {
                                     <div className='title-acc' slot='container-start'>
                                         <strong>Minhas contas</strong>
 
-                                        <SliderNavigation isBeginning={sliderState.isBeginning} isEnd={sliderState.isEnd}/>
+                                        <SliderNavigation
+                                            isBeginning={sliderState.isBeginning}
+                                            isEnd={sliderState.isEnd}
+                                        />
                                     </div>
 
                                     {accounts.map((account) => (
