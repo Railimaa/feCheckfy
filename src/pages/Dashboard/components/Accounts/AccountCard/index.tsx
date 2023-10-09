@@ -1,4 +1,3 @@
-
 import { BankAccountTypeIcon } from '../../../../../assets/icons/BankAccountTypeIcon';
 import { BankAccount } from '../../../../../types/BankAccount';
 import { formatCurrency } from '../../../../../utils/formatCurrency';
@@ -14,10 +13,12 @@ export function AccountCard({ account }: AccountCardProps) {
     const { color, name, currentBalance, type } = account;
     const { arValuesVisible, openEditAccountModal } = useDashboardContext();
 
-
     return (
-        <Container color={color} role='button' onClick={() => openEditAccountModal(account)}>
-
+        <Container
+            color={color}
+            onClick={() => openEditAccountModal(account)}
+            role='button'
+        >
             <div className='content'>
                 <BankAccountTypeIcon type={type} />
 
