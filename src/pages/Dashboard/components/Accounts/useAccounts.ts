@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
+import { useBankAccounts } from '../../../../hooks/useBankAccountss';
 import { useWindowWidth } from '../../../../hooks/useWindowWidth';
 import { useDashboardContext } from '../DashboardContext/useDashboardContext';
-import { useBankAccounts } from '../../../../hooks/useBankAccountss';
 
 
 export function useAccounts() {

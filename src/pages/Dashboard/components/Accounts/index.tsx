@@ -1,13 +1,13 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { EyeIcon } from '../../../../assets/icons/EyeIcon';
-import { Container } from './style';
-import { AccountCard } from './AccountCard';
-import { useAccounts } from './useAccounts';
-import { formatCurrency } from '../../../../utils/formatCurrency';
-import { SliderNavigation } from './SliderNavigation';
-import { Spinner } from '../../../../components/Spinner';
 import { PlusIcon } from '@radix-ui/react-icons';
+import 'swiper/css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { EyeIcon } from '../../../../assets/icons/EyeIcon';
+import { Spinner } from '../../../../components/Spinner';
+import { formatCurrency } from '../../../../utils/formatCurrency';
+import { AccountCard } from './AccountCard';
+import { SliderNavigation } from './SliderNavigation';
+import { Container } from './style';
+import { useAccounts } from './useAccounts';
 
 
 export function Accounts() {
